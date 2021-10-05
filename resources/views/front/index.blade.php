@@ -37,6 +37,8 @@
 </div>
 <!-- //skip nav -->
 
+
+
 <div id="wrap">
 	<div id="header" class="header">
 		
@@ -145,7 +147,7 @@
 				<div class="link-box">
 					<!-- 로그인전 -->
 					<a href="#">로그인</a>
-					<a href="/member/index.php?mode=step_01">회원가입</a>
+					<a href="/step1">회원가입</a>
 					<a href="#">상담/고객센터</a>
 					<!-- 로그인후 -->
 					<!-- <a href="#">로그아웃</a>
