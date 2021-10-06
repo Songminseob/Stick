@@ -477,13 +477,15 @@ Aqua Auth 컨텐츠의 녹화차단 - Aqua Director 컨텐츠의 다운로드 DR
 
 			<div class="all-agree-box">
 				<label class="input-sp">
-					<input type="checkbox" class = "chk" name= "allcheck" id = "allcheck">
+					<input type="checkbox" class = "chk" name= "allcheck" id = "allcheck" value ="all">
 					<span class="input-txt">상위 이용약관 및 개인정보 취급방침에 모두 동의합니다.</span>
 				</label>
 			</div>
 
 			<div class="box-btn">
-				<a href="" class="btn-l">다음단계 (휴대폰인증)</a>
+				<span class="btn" id="nextbtn">
+					<a href="step2" class="nextlink">다음단계 (휴대폰인증)</a>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -492,15 +494,16 @@ Aqua Auth 컨텐츠의 녹화차단 - Aqua Director 컨텐츠의 다운로드 DR
 
 <script>
 
+$(document).ready(function(){
+
 	$("#allcheck").click(function(){
         if($("#allcheck").is(":checked")){
             $(".chk").prop("checked", true);
         } else {
             $(".chk").prop("checked", false);
         }
+	});
 
-    });
- 
     $(".chk").click(function(){
         if($("input[name='check[]']:checked").length == 2){
             $("#allcheck").prop("checked", true);
@@ -508,6 +511,15 @@ Aqua Auth 컨텐츠의 녹화차단 - Aqua Director 컨텐츠의 다운로드 DR
             $("#allcheck").prop("checked", false);
         }
     });
+	
+	$("#nextbtn").click(function(e){
+		if($('#allcheck').is(':checked')!=true){
+			e.preventDefault();
+		}
+	})
+	
+})
+	
 
 
 </script>
