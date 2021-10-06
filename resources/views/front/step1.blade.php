@@ -1,4 +1,7 @@
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 <div id="container" class="container-full">
 	<div id="content" class="content">
 		<div class="inner">
@@ -298,8 +301,8 @@ Aqua Auth 컨텐츠의 녹화차단 - Aqua Director 컨텐츠의 다운로드 DR
 					<button type="button" class="js_agree_open"><em>펼치기 ▼</em></button>
 					<div class="mt10">
 						<label class="input-sp">
-							<input type="checkbox"/>
-							<span class="input-txt" name = "check">약관에 동의합니다.</span>
+							<input type="checkbox" class = "chk" name = "check[]" id = 'check1'>
+							<span class="input-txt">약관에 동의합니다.</span>
 						</label>
 					</div>
 				</div>
@@ -465,8 +468,8 @@ Aqua Auth 컨텐츠의 녹화차단 - Aqua Director 컨텐츠의 다운로드 DR
 					<button type="button" class="js_agree_open"><em>펼치기 ▼</em></button>
 					<div class="mt10">
 						<label class="input-sp">
-							<input type="checkbox"/>
-							<span class="input-txt" name = "check">약관에 동의합니다.</span>
+							<input type="checkbox" class = "chk" name = "check[]" id = "check2">
+							<span class="input-txt">약관에 동의합니다.</span>
 						</label>
 					</div>
 				</div>
@@ -474,21 +477,37 @@ Aqua Auth 컨텐츠의 녹화차단 - Aqua Director 컨텐츠의 다운로드 DR
 
 			<div class="all-agree-box">
 				<label class="input-sp">
-					<input type="checkbox"/>
-					<span class="input-txt" name= "allcheck">상위 이용약관 및 개인정보 취급방침에 모두 동의합니다.</span>
+					<input type="checkbox" class = "chk" name= "allcheck" id = "allcheck">
+					<span class="input-txt">상위 이용약관 및 개인정보 취급방침에 모두 동의합니다.</span>
 				</label>
 			</div>
 
 			<div class="box-btn">
-				<a href="step2" class="btn-l">다음단계 (휴대폰인증)</a>
+				<a href="" class="btn-l">다음단계 (휴대폰인증)</a>
 			</div>
 		</div>
 	</div>
 </div>
 
+
 <script>
-    function checkbox_check(){
-        if($("input:checkbox[namm=check]").is(":checked")==true){
-            
+
+	$("#allcheck").click(function(){
+        if($("#allcheck").is(":checked")){
+            $(".chk").prop("checked", true);
+        } else {
+            $(".chk").prop("checked", false);
         }
-    }
+
+    });
+ 
+    $(".chk").click(function(){
+        if($("input[name='check[]']:checked").length == 2){
+            $("#allcheck").prop("checked", true);
+        }else{
+            $("#allcheck").prop("checked", false);
+        }
+    });
+
+
+</script>

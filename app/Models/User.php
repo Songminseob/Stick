@@ -17,10 +17,14 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    //User::Create 사용시 필요
     protected $fillable = [
         'name',
         'email',
         'password',
+        'user_id',
+        'user_level'
     ];
 
     /**
@@ -40,5 +44,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $timestamp = [
+        'created_at', 'updated_at'
     ];
 }

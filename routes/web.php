@@ -14,8 +14,14 @@ use App\Http\Controllers\FrontController;
 |
 */
 
+
+
 Route::get('/', [FrontController::class, 'index']);
 
 Route::get('/step1', [FrontController::class, 'step1']);
 
 Route::get('/step2', [FrontController::class, 'step2']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
