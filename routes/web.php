@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,12 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('/step1', [FrontController::class, 'step1']);
 
 Route::get('/step2', [FrontController::class, 'step2']);
+
+Route::get('/step3', [FrontController::class, 'step3']);
+
+Route::post('/step4', [Controller::class, 'step4']);
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

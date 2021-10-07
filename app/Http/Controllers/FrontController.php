@@ -20,12 +20,21 @@ class FrontController extends BaseController
 
     function step2() 
     {
-
         return view("front.step2", [ 
         ]);
-
     }
 
+    function step3() 
+    {
+        return view("front.step3", [ 
+        ]);
+    }
+
+    function step4() 
+    {
+        return view("front.step4", [ 
+        ]);
+    }
 
 /*
     function index() 

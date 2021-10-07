@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <!--[if (IE 7)]><html class="no-js ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
@@ -32,7 +31,6 @@
 <!--[if lte IE 9]> <script src="/js/common/place_holder.js"></script> <![endif]-->
 
 </head><body>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- skip nav -->
 <div id="skip-nav">
 <a href="#content">본문 바로가기</a>
@@ -165,42 +163,124 @@
 				<h3 class="tit-h3">회원가입</h3>
 				<div class="sub-depth">
 					<span><i class="icon-home"><span>홈</span></i></span>
-					<strong>회원가입 완료</strong>
+					<strong>회원가입</strong>
 				</div>
 			</div>
 
 			<div class="join-step-bar">
 				<ul>
 					<li><i class="icon-join-agree"></i> 약관동의</li>
-					<li class="on"><i class="icon-join-chk"></i> 본인확인</li>
-					<li class="last"><i class="icon-join-inp"></i> 정보입력</li>
+					<li><i class="icon-join-chk"></i> 본인확인</li>
+					<li class="last on"><i class="icon-join-inp"></i> 정보입력</li>
 				</ul>
 			</div>
 
-			<div class="tit-box-h4">
-				<h3 class="tit-h4">본인인증</h3>
-			</div>
+			<div class="section-content">
+				<table border="0" cellpadding="0" cellspacing="0" class="tbl-col-join">
+					<caption class="hidden">강의정보</caption>
+					<colgroup>
+						<col style="width:15%"/>
+						<col style="*"/>
+					</colgroup>
+					<form method="POST" action="{{ route('step4') }}">
+					<tbody>
 
-			<div class="section-content after">
-				<div class="identify-box" style="width:100%;height:190px;">
-					<div class="identify-inner">
-						<strong>휴대폰 인증</strong>
-						<p>주민번호 없이 메시지 수신가능한 휴대폰으로 1개 아이디만 회원가입이 가능합니다. </p>
+						<tr>
+							<th scope="col"><span class="icons">*</span>이름</th>
+							<td><input type="text" class="input-text" value="{{ old('name') }}" style="width:302px"/></td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>아이디</th>
+							<td><input type="text" class="input-text" value="{{ old('user_id') }}" style="width:302px" placeholder="영문자로 시작하는 4~15자의 영문소문자, 숫자"/><a href="#" class="btn-s-tin ml10">중복확인</a></td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>비밀번호</th>
+							<td><input type="password" class="input-text" style="width:302px" placeholder="8-15자의 영문자/숫자 혼합"/></td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>비밀번호 확인</th>
+							<td><input type="password" class="input-text" style="width:302px"/></td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>이메일주소</th>
+							<td>
+								<input type="text" class="input-text" value="{{ old('email') }}" style="width:138px"/> @ <input type="text" class="input-text" style="width:138px"/>
+								<select class="input-sel" style="width:160px">
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>휴대폰 번호</th>
+							<td>
+								<input type="text" class="input-text" value="{{ old('phone') }}" style="width:50px"/> - 
+								<input type="text" class="input-text" style="width:50px"/> - 
+								<input type="text" class="input-text" style="width:50px"/>
+							</td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons"></span>일반전화 번호</th>
+							<td><input type="text" class="input-text" value="{{ old('tel') }}" style="width:88px"/> - <input type="text" class="input-text" style="width:88px"/> - <input type="text" class="input-text" style="width:88px"/></td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>주소</th>
+							<td>
+								<p >
+									<label>우편번호 <input type="text" class="input-text ml5" value="{{ old('addr1') }}" style="width:242px"/></label><a href="#" class="btn-s-tin ml10">주소찾기</a>
+								</p>
+								<p class="mt10">
+									<label>기본주소 <input type="text" class="input-text ml5" value="{{ old('addr2') }}" style="width:719px"/></label>
+								</p>
+								<p class="mt10">
+									<label>상세주소 <input type="text" class="input-text ml5" value="{{ old('addr3') }}" style="width:719px"/></label>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>SMS수신</th>
+							<td>
+								<div class="box-input">
+									<label class="input-sp">
+										<input type="radio" name="radio" id="" checked="checked"/>
+										<span class="input-txt">수신함</span>
+									</label>
+									<label class="input-sp">
+										<input type="radio" name="radio" id="" />
+										<span class="input-txt">미수신</span>
+									</label>
+								</div>
+								<p>SMS수신 시, 해커스의 혜택 및 이벤트 정보를 받아보실 수 있습니다.</p>
+							</td>
+						</tr>
+						<tr>
+							<th scope="col"><span class="icons">*</span>메일수신</th>
+							<td>
+								<div class="box-input">
+									<label class="input-sp">
+										<input type="radio" name="radio2" id="" checked="checked"/>
+										<span class="input-txt">수신함</span>
+									</label>
+									<label class="input-sp">
+										<input type="radio" name="radio2" id="" />
+										<span class="input-txt">미수신</span>
+									</label>
+								</div>
+								<p>메일수신 시, 해커스의 혜택 및 이벤트 정보를 받아보실 수 있습니다.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-						<br />
-						<input type="text" class="input-text" id="input1" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input2" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input3" style="width:50px"/>
-						<button class="btn-s-line" id="btn1">인증번호 받기</button>
-
-						<br /><br />
-						<input type="text" class="input-text" id="input4" style="width:200px"/>
-						<button class="btn-s-line" id="btn2">인증번호 확인</button>
-					</div>
-					<i class="graphic-phon"><span>휴대폰 인증</span></i>
+				<div class="box-btn">
+					<button type="submit"class="btn-l">회원가입</button>
 				</div>
-			</div>
 
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
@@ -229,40 +309,3 @@
 </div>
 </body>
 </html>
-
-<script>
-
-	$(document).ready(function(){
-		
-		var sk = "123456";
-		sessionStorage.setItem("인증번호", sk);
-
-
-		$("#btn1").click(function(){
-			var input1 = $('#input1').val();
-			var input2 = $('#input2').val();
-			var input3 = $('#input3').val();
-
-			if(input1 == "" || input2 == "" || input3 == ""){
-				alert('휴대폰번호를 올바르게 입력해주세요.');
-			}
-			else{
-				alert('인증번호가 발송되었습니다.');
-			}
-		});
-
-		$("#btn2").click(function(){
-			var input4 = $('#input4').val();
-			if(input4 == sessionStorage.getItem("인증번호")){
-				alert('인증번호를 확인하였습니다.');
-				location.href="step3";
-			}
-			else{
-				alert('인증번호를 다시 확인해주세요.');
-			}
-
-		})
-
-	})
-
-</script>

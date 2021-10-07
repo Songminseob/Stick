@@ -15,7 +15,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    protected $redirectTo = RouteServiceProvider::HOME; //회원가입 후 이동하는 페이지
+    protected $redirectTo = '/step4'; //회원가입 후 이동하는 페이지
 
     
     public function __construct()
@@ -41,10 +41,15 @@ class RegisterController extends Controller
             'user_id' => $data['user_id'], //유저아이디 추가
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'user_level' => config('ext.user.user_level.default'), //유저레벨 추가
+            //'user_level' => config('ext.user.user_level.default'), //유저레벨 추가
+            'phone' => $data['phone'],
+            'tel' => $data['tel'],
+            'addr1' => $data['addr1'],
+            'addr2' => $data['addr2'],
+            'addr3' => $data['addr3'],
+            'smsre' => $data['smsre'],
+            'emare' => $data['emare'],
         ]);
-
-
         //의존성 주입
         // $user = new User();
         // $user->name = $data['name'];
@@ -52,10 +57,8 @@ class RegisterController extends Controller
         // $user->email = $data['email'];
         // $user->password = Hash::make($data['password']);
         // $user->user_level = config('ext.user.user_level.default');
-        
-        
-        // return $user->save();
 
+        // return $user->save();
     }
 
 
