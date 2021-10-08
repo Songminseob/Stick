@@ -16,8 +16,6 @@ class CreateUsersTable extends Migration
 
             $table->string('user_id')->unique()->comment('아이디'); // 아이디 추가
 
-            //$table->unsignedSmallInteger('user_level')->comment('권한'); // 유저레벨(권한) 추가
-
             $table->string('email')->unique()->comment('이메일');
 
             $table->timestamp('email_verified_at')->nullable();
@@ -30,11 +28,11 @@ class CreateUsersTable extends Migration
 
             $table->string('tel')->comment('집전화');
 
-            $table->string('addr1')->unique()->comment('우편번호');
+            $table->string('addr1')->comment('우편번호');
 
-            $table->string('addr2')->unique()->comment('기본주소');
+            $table->string('addr2')->comment('기본주소');
 
-            $table->string('addr3')->unique()->comment('상세주소');
+            $table->string('addr3')->comment('상세주소');
 
             $table->boolean('smsre')->default('1')->comment('sms수신');
 

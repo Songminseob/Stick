@@ -25,7 +25,6 @@ class User extends Authenticatable
         'addr3',
         'smsre',
         'emare'
-        //'user_level' 
     ];
 
     protected $hidden = [
