@@ -18,6 +18,32 @@ class SignUpController extends BaseController
 
     protected $redirectTo = '/step4';
 
+    function validator(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'string','min:4', 'max:10'],
+            'user_id' =>['bail','required', 'string', 'min:4','max:15','unique:users'],
+            'email' => ['bail','required', 'string', 'email','min:4', 'max:50', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'max:15', 'confirmed'],
+            'phone' =>['bail','required','string','min:8','max:15','unique:users'],
+        ]);
+        
+        if($validatedData->fails()){
+            return redirectTo('/step3');
+        }
+        
+        return "/step4";
+    }
+
+    function messages(){
+        return[
+            'user_id.unique:users' => '아이디가 이미 존재합니다.',
+            'password.required' => '비밀번호를 입력하세요.',
+            'phone.unique' => '이미 인증받은 휴대폰입니다.'
+        ];
+    }
+
+
     function step4(Request $data){
         User::create([
             'name' => $data['name'],
@@ -35,5 +61,6 @@ class SignUpController extends BaseController
 
         return redirect($this->redirectTo);   
     }
+
 }
 

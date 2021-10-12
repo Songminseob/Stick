@@ -145,14 +145,17 @@
 		<div class="top-section">
 			<div class="inner">
 				<div class="link-box">
-					<!-- 로그인전 -->
-					<a href="#">로그인</a>
-					<a href="/step1">회원가입</a>
-					<a href="#">상담/고객센터</a>
+				@if ($isLogin)
 					<!-- 로그인후 -->
-					<!-- <a href="#">로그아웃</a>
-					<a href="#">내정보</a>
-					<a href="#">상담/고객센터</a> -->
+					{{$isLogin[0]}}님
+					<a href="/logout">로그아웃</a>
+					<a href="#">내정보</a>	
+				@else
+					<!-- 로그인전 -->
+					<a href="/hlogin">로그인</a>
+					<a href="/step1">회원가입</a>
+				@endif
+					<a href="#">상담/고객센터</a>
 				</div>
 			</div>
 		</div>

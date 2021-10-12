@@ -183,31 +183,40 @@
 						<col style="width:15%"/>
 						<col style="*"/>
 					</colgroup>
-					<form method="POST" action="{{ route('auth.step4') }}" name = "form">
+					<form method="POST" action="{{ route('auth.step3') }}" name = "form">
 						@csrf
 						<tbody>
 
 							<tr>
 								<th scope="col"><span class="icons">*</span>이름</th>
-								<td><input type="text" name="name" class="input-text" value="" style="width:302px" required /></td>
+								<td><input type="text" name="name" class="input-text" value="" style="width:302px" maxlength='10' required /></td>
+								@error('name')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</tr>
 							<tr>
 								<th scope="col"><span class="icons">*</span>아이디</th>
-								<td><input type="text" name="user_id" class="input-text" value="" style="width:302px" placeholder="영문자로 시작하는 4~15자의 영문소문자, 숫자" pattern="{4,15}" required /><a href="#" class="btn-s-tin ml10">중복확인</a></td>
+								<td><input type="text" name="user_id" class="input-text @error('user_id') is-invalid @enderror" value="" style="width:302px" placeholder="영문자로 시작하는 4~15자의 영문소문자, 숫자" maxlength='15' required /><a href="#" class="btn-s-tin ml10">중복확인</a></td>
+								@error('user_id')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</tr>
 							<tr>
 								<th scope="col"><span class="icons">*</span>비밀번호</th>
-								<td><input type="password" name="password" class="input-text" style="width:302px" placeholder="8-15자의 영문자/숫자 혼합" pattern="{8,15}"/></td>
+								<td><input type="password" name="password" class="input-text @error('password') is-invalid @enderror" style="width:302px" placeholder="8-15자의 영문자/숫자 혼합" maxlength='15'/></td>
+								@error('password')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</tr>
 							<tr>
 								<th scope="col"><span class="icons">*</span>비밀번호 확인</th>
-								<td><input type="password" name="valid_password" class="input-text" style="width:302px"/></td>
+								<td><input type="password" name="valid_password" class="input-text" style="width:302px" maxlength='15'/></td>
 							</tr>
 							<tr>
 								<th scope="col"><span class="icons">*</span>이메일주소</th>
 								<td>
 									<input type="hidden" name ="email" id="emailid"/>
-									<input type="text" name="email1" class="input-text" id ="email1" style="width:138px" required/> @ <input type="text" name="domain" id="domain" class="input-text" style="width:138px" required/>
+									<input type="text" name="email1" class="input-text" id ="email1" style="width:138px" maxlength='15' required/> @ <input type="text" name="domain" id="domain" class="input-text" style="width:138px" maxlength='15' required/>
 									<select class="input-sel" style="width:160px">
 										<option value="">선택입력</option>
 										<option value="">선택입력</option>
@@ -216,36 +225,42 @@
 										<option value="">선택입력</option>
 									</select>
 								</td>
+								@error('email')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</tr>
 							<tr>
 								<th scope="col"><span class="icons">*</span>휴대폰 번호</th>
 								<td>
-									<input type="hidden" name ="phone" id="phoneid" value=""/>
-									<input type="text" class="input-text" name ="phone1" id="phone1" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" pattern="{3}" required/> - 
-									<input type="text" class="input-text" name ="phone2" id="phone2" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" pattern="{3,4}" required/> - 
-									<input type="text" class="input-text" name ="phone3" id="phone3" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" pattern="{4}" required/>
+									<input type="hidden" name ="phone" id="phoneid" class="@error('phone') is-invalid @enderror" value=""/>
+									<input type="text" class="input-text" name ="phone1" id="phone1" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='3' required/> - 
+									<input type="text" class="input-text" name ="phone2" id="phone2" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' required/> - 
+									<input type="text" class="input-text" name ="phone3" id="phone3" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' required/>
 								</td>
+								@error('phone')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</tr>
 							<tr>
 								<th scope="col"><span class="icons"></span>일반전화 번호</th>
 								<td>
 									<input type="hidden" name ="tel" id="telid" value=""/>
-									<input type="text" class="input-text" name="tel1" id ="tel1" style="width:88px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" /> - 
-									<input type="text" class="input-text" name="tel2" id ="tel2" style="width:88px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/> - 
-									<input type="text" class="input-text" name="tel3" id ="tel3" style="width:88px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+									<input type="text" class="input-text" name="tel1" id ="tel1" style="width:88px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' /> - 
+									<input type="text" class="input-text" name="tel2" id ="tel2" style="width:88px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4'/> - 
+									<input type="text" class="input-text" name="tel3" id ="tel3" style="width:88px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4'/>
 								</td>
 							</tr>
 							<tr>
 								<th scope="col"><span class="icons">*</span>주소</th>
 								<td>
 									<p>
-										<label>우편번호 <input type="text" class="input-text ml5" name="addr1" style="width:242px" required /></label><a href="#" class="btn-s-tin ml10">주소찾기</a>
+										<label>우편번호 <input type="text" class="input-text ml5" name="addr1" style="width:242px" maxlength='15' required /></label><a href="#" class="btn-s-tin ml10" >주소찾기</a>
 									</p>
 									<p class="mt10">
-										<label>기본주소 <input type="text" class="input-text ml5" name="addr2" style="width:719px" required /></label>
+										<label>기본주소 <input type="text" class="input-text ml5" name="addr2" style="width:719px" maxlength='30' required /></label>
 									</p>
 									<p class="mt10">
-										<label>상세주소 <input type="text" class="input-text ml5" name="addr3" style="width:719px" required /></label>
+										<label>상세주소 <input type="text" class="input-text ml5" name="addr3" style="width:719px" maxlength='30' required /></label>
 									</p>
 								</td>
 							</tr>
