@@ -318,15 +318,18 @@
 			$.ajax(
 				{
 					headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-					type:"POST",
+					type:"json",
+					method:"POST",
 					url:"{{route('su.id')}}",
-					data:{phone}, //phone 데이터를 넘김
-					dataType: "json", //json데이터 타입으로 받겠다
+					data:{phone}, 
+					dataType: "json", 
 					success:function(){
 						alert("인증번호가 발송되었습니다.");
 					},
-					error:function(){
-						alert("등록되지 않은 휴대폰번호입니다.");
+					error:function(err){
+						if (err.status === 422) {
+							alert("등록되지 않은 휴대폰번호입니다.");
+						}
 					}
 				}
 			)

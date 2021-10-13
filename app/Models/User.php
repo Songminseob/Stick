@@ -39,4 +39,5 @@ class User extends Authenticatable
     protected $timestamp = [
         'created_at', 'updated_at'
     ];
+
 }
