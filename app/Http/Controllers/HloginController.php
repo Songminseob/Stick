@@ -12,7 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class HloginController extends Controller
 {
-
+    
     use AuthenticatesUsers;
     
     protected $redirectTo = '/';
@@ -27,6 +27,8 @@ class HloginController extends Controller
     {
         $user_id = $request -> user_id;
         $password = $request -> password;
+        $email = $request -> email;
+        $phone = $request -> phone;
     
         // 회원체크
         // 세션 저장

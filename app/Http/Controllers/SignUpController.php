@@ -31,14 +31,15 @@ class SignUpController extends BaseController
         if($validatedData->fails()){
             return redirectTo('/step3');
         }
-        
         return "/step4";
+        
     }
 
-    function messages(){
+    function messages(){//에러 메세지 정의
         return[
             'user_id.unique:users' => '아이디가 이미 존재합니다.',
             'password.required' => '비밀번호를 입력하세요.',
+            'password.min:8' => '비밀번호는 최소 4자 이상 입력해주세요.',
             'phone.unique' => '이미 인증받은 휴대폰입니다.'
         ];
     }

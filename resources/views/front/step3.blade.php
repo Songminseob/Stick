@@ -146,8 +146,8 @@
 			<div class="inner">
 				<div class="link-box">
 					<!-- 로그인전 -->
-					<a href="#">로그인</a>
-					<a href="#">회원가입</a>
+					<a href="/hlogin">로그인</a>
+					<a href="/step1">회원가입</a>
 					<a href="#">상담/고객센터</a>
 					<!-- 로그인후 -->
 					<!-- <a href="#">로그아웃</a>

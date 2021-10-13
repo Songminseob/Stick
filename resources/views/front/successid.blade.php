@@ -32,7 +32,6 @@
 <!--[if lte IE 9]> <script src="/js/common/place_holder.js"></script> <![endif]-->
 
 </head><body>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- skip nav -->
 <div id="skip-nav">
 <a href="#content">본문 바로가기</a>
@@ -147,8 +146,8 @@
 			<div class="inner">
 				<div class="link-box">
 					<!-- 로그인전 -->
-					<a href="/hlogin">로그인</a>
-					<a href="/step1">회원가입</a>
+					<a href="#">로그인</a>
+					<a href="#">회원가입</a>
 					<a href="#">상담/고객센터</a>
 					<!-- 로그인후 -->
 					<!-- <a href="#">로그아웃</a>
@@ -162,43 +161,30 @@
 	<div id="content" class="content">
 		<div class="inner">
 			<div class="tit-box-h3">
-				<h3 class="tit-h3">회원가입</h3>
+				<h3 class="tit-h3">아이디/비밀번호 찾기</h3>
 				<div class="sub-depth">
 					<span><i class="icon-home"><span>홈</span></i></span>
-					<strong>회원가입 완료</strong>
+					<strong>아이디/비밀번호 찾기</strong>
 				</div>
 			</div>
 
-			<div class="join-step-bar">
-				<ul>
-					<li><i class="icon-join-agree"></i> 약관동의</li>
-					<li class="on"><i class="icon-join-chk"></i> 본인확인</li>
-					<li class="last"><i class="icon-join-inp"></i> 정보입력</li>
-				</ul>
-			</div>
+			<ul class="tab-list">
+				<li class="on"><a href="#">아이디 찾기</a></li>
+				<li><a href="#">비밀번호 찾기</a></li>
+			</ul>
 
 			<div class="tit-box-h4">
-				<h3 class="tit-h4">본인인증</h3>
+				<h3 class="tit-h4">아이디 조회결과</h3>
 			</div>
 
-			<div class="section-content after">
-				<div class="identify-box" style="width:100%;height:190px;">
-					<div class="identify-inner">
-						<strong>휴대폰 인증</strong>
-						<p>주민번호 없이 메시지 수신가능한 휴대폰으로 1개 아이디만 회원가입이 가능합니다. </p>
+			<div class="guide-box">
+				<p class="fs16 mb5">이진아 회원님의 아이디는 아래와 같습니다.</p>
+				<strong class="big-title tc-brand">rreamon7</strong>
+			</div>
 
-						<br />
-						<input type="text" class="input-text" id="input1" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input2" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input3" style="width:50px"/>
-						<button class="btn-s-line" id="btn1">인증번호 받기</button>
-
-						<br /><br />
-						<input type="text" class="input-text" id="input4" style="width:200px"/>
-						<button class="btn-s-line" id="btn2">인증번호 확인</button>
-					</div>
-					<i class="graphic-phon"><span>휴대폰 인증</span></i>
-				</div>
+			<div class="box-btn mt30">
+				<a href="#" class="btn-l">로그인하러 가기</a>
+				<a href="#" class="btn-l-line ml5">비밀번호 찾기</a>
 			</div>
 
 		</div>
@@ -229,40 +215,3 @@
 </div>
 </body>
 </html>
-
-<script>
-
-	$(document).ready(function(){
-		
-		var sk = "123456";
-		sessionStorage.setItem("인증번호", sk);
-
-
-		$("#btn1").click(function(){
-			var input1 = $('#input1').val();
-			var input2 = $('#input2').val();
-			var input3 = $('#input3').val();
-
-			if(input1 == "" || input2 == "" || input3 == ""){
-				alert('휴대폰번호를 올바르게 입력해주세요.');
-			}
-			else{
-				alert('인증번호가 발송되었습니다.');
-			}
-		});
-
-		$("#btn2").click(function(){
-			var input4 = $('#input4').val();
-			if(input4 == sessionStorage.getItem("인증번호")){
-				alert('인증번호를 확인하였습니다.');
-				location.href="step3";
-			}
-			else{
-				alert('인증번호를 다시 확인해주세요.');
-			}
-
-		})
-
-	})
-
-</script>

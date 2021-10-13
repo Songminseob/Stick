@@ -58,7 +58,7 @@
 				
 				<div class="box-btn">
 					<a href="/step1" class="btn-m-gray">회원가입</a>
-					<a href="#" class="btn-m-gray">ID/PW 찾기</a>
+					<a href="/findid" class="btn-m-gray">ID/PW 찾기</a>
 				</div>
 			</div>
 			

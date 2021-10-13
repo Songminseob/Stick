@@ -32,7 +32,6 @@
 <!--[if lte IE 9]> <script src="/js/common/place_holder.js"></script> <![endif]-->
 
 </head><body>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- skip nav -->
 <div id="skip-nav">
 <a href="#content">본문 바로가기</a>
@@ -162,45 +161,119 @@
 	<div id="content" class="content">
 		<div class="inner">
 			<div class="tit-box-h3">
-				<h3 class="tit-h3">회원가입</h3>
+				<h3 class="tit-h3">아이디/비밀번호 찾기</h3>
 				<div class="sub-depth">
 					<span><i class="icon-home"><span>홈</span></i></span>
-					<strong>회원가입 완료</strong>
+					<strong>아이디/비밀번호 찾기</strong>
 				</div>
 			</div>
 
-			<div class="join-step-bar">
-				<ul>
-					<li><i class="icon-join-agree"></i> 약관동의</li>
-					<li class="on"><i class="icon-join-chk"></i> 본인확인</li>
-					<li class="last"><i class="icon-join-inp"></i> 정보입력</li>
-				</ul>
-			</div>
+			<ul class="tab-list">
+				<li><a href="/findid">아이디 찾기</a></li>
+				<li class="on"><a href="/findpw">비밀번호 찾기</a></li>
+			</ul>
 
 			<div class="tit-box-h4">
-				<h3 class="tit-h4">본인인증</h3>
+				<h3 class="tit-h4">비밀번호 찾기 방법 선택</h3>
 			</div>
 
-			<div class="section-content after">
-				<div class="identify-box" style="width:100%;height:190px;">
-					<div class="identify-inner">
-						<strong>휴대폰 인증</strong>
-						<p>주민번호 없이 메시지 수신가능한 휴대폰으로 1개 아이디만 회원가입이 가능합니다. </p>
+			<dl class="find-box" id="pauth">
+				<dt>휴대폰 인증</dt>
+				<dd>
+					고객님이 회원 가입 시 등록한 휴대폰 번호와 입력하신 휴대폰 번호가 동일해야 합니다.
+					<label class="input-sp big">
+						<input type="radio" name="radio" />
+						<span class="input-txt"></span>
+					</label>
+				</dd>
+			</dl>
 
-						<br />
-						<input type="text" class="input-text" id="input1" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input2" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input3" style="width:50px"/>
-						<button class="btn-s-line" id="btn1">인증번호 받기</button>
+			<dl class="find-box" id="eauth">
+				<dt>이메일 인증</dt>
+				<dd>
+					고객님이 회원 가입 시 등록한 이메일 주소와 입력하신 이메일 주소가 동일해야 합니다.
+					<label class="input-sp big">
+						<input type="radio" name="radio"/>
+						<span class="input-txt"></span>
+					</label>
+				</dd>
+			</dl>
 
-						<br /><br />
-						<input type="text" class="input-text" id="input4" style="width:200px"/>
-						<button class="btn-s-line" id="btn2">인증번호 확인</button>
-					</div>
-					<i class="graphic-phon"><span>휴대폰 인증</span></i>
-				</div>
+			<div class="section-content mt30">
+				<table border="0" cellpadding="0" cellspacing="0" class="tbl-col-join">
+					<caption class="hidden">아이디/비밀번호 찾기 개인정보입력</caption>
+					<colgroup>
+						<col style="width:15%"/>
+						<col style="*"/>
+					</colgroup>
+
+					<tbody>
+						<tr>
+							<th scope="col">성명</th>
+							<td><input type="text" class="input-text" style="width:302px" /></td>
+						</tr>
+						<tr>
+							<th scope="col">아이디</th>
+							<td>
+								<select class="input-sel" style="width:148px">
+									<option value="">선택</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+								</select>
+								년
+								<select class="input-sel" style="width:147px">
+									<option value="">선택</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+								</select>
+								월
+								<select class="input-sel" style="width:147px">
+									<option value="">선택</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+								</select>
+								일
+							</td>
+						</tr>
+						<tr id ="emailaddr">
+							<th scope="col">이메일주소</th>
+							<td>
+								<input type="text" class="input-text" style="width:138px" id="email1" /> @ <input type="text" class="input-text" style="width:138px" id="email2"/>
+								<select class="input-sel" style="width:160px">
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+									<option value="">선택입력</option>
+								</select>
+								<button class="btn-s-tin ml10" id="ebtn">인증번호 받기</button>
+							</td>
+						</tr>
+
+						<tr id = "phoneaddr">
+							<th scope="col">휴대폰 번호</th>
+								<td>
+									<input type="hidden" name ="phone" id="phoneid" class="@error('phone') is-invalid @enderror" value=""/>
+									<input type="text" class="input-text" name ="phone1" id="phone1" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='3' required/> - 
+									<input type="text" class="input-text" name ="phone2" id="phone2" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' required/> - 
+									<input type="text" class="input-text" name ="phone3" id="phone3" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' required/>
+									<button class="btn-s-tin ml10" id="pbtn">인증번호 받기</butoon>
+								</td>
+							</tr>
+						<tr>
+							<th scope="col">인증번호</th>
+							<td><input type="text" class="input-text" style="width:478px" /><a href="#" class="btn-s-tin ml10">인증번호 확인</a></td>
+						</tr>
+					</tbody>
+				</table>
+
 			</div>
-
 		</div>
 	</div>
 </div>
@@ -228,23 +301,37 @@
 	</div>
 </div>
 </body>
-</html>
-
 <script>
-
 	$(document).ready(function(){
 		
-		var sk = "123456";
-		sessionStorage.setItem("인증번호", sk);
+		$("#pauth").click(function(){
+			$("#emailaddr").hide();
+			$("#phoneaddr").show();
+		})
+		$("#eauth").click(function(){
+			$("#emailaddr").show();
+			$("#phoneaddr").hide();
+		})
 
-
-		$("#btn1").click(function(){
-			var input1 = $('#input1').val();
-			var input2 = $('#input2').val();
-			var input3 = $('#input3').val();
+		$("#pbtn").click(function(){
+			var input1 = $('#phone1').val();
+			var input2 = $('#phone2').val();
+			var input3 = $('#phone3').val();
 
 			if(input1 == "" || input2 == "" || input3 == ""){
 				alert('휴대폰번호를 올바르게 입력해주세요.');
+			}
+			else{
+				alert('인증번호가 발송되었습니다.');
+			}
+		});
+
+		$("#ebtn").click(function(){
+			var input1 = $('#email1').val();
+			var input2 = $('#email2').val();
+
+			if(input1 == "" || input2 == ""){
+				alert('이메일주소를 올바르게 입력해주세요.');
 			}
 			else{
 				alert('인증번호가 발송되었습니다.');
@@ -264,5 +351,8 @@
 		})
 
 	})
+	
 
 </script>
+
+</html>

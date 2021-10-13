@@ -64,4 +64,24 @@ class FrontController extends BaseController
         return view("front.index", ['isLogin' => Auth::logout()]);//로그인세션 로그아웃
     }
     
+    function fid()
+    {
+        return view("front.findid",[
+        ]);
+        
+    }
+
+    function fpw()
+    {
+        return view("front.findpw",[
+        ]);
+    }
+
+    function suid()
+    {
+        return view("front.successid",[
+
+        ]);
+    }
+
 }
