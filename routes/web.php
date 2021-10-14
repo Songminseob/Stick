@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\FindController;
+use App\Http\Controllers\ModifyController;
 
 
 Route::get('/', [FrontController::class, 'index']);
@@ -27,18 +28,31 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/hlogin', [HloginController::class, 'hlogin']);
 
-Route::post('/hlogin',[HloginController::class, 'ulogin'])->name('auth.hlogin');
+Route::post('/hlogin', [HloginController::class, 'ulogin'])->name('auth.hlogin');
 
-Route::get('/logout',[FrontController::class, 'logout']);
+Route::get('/logout', [FrontController::class, 'logout']);
 
-Route::get('/findpw',[FrontController::class, 'fpw']);
+Route::get('/findpw', [FrontController::class, 'fpw']);
 
-Route::get('/findid',[FrontController::class, 'fid']);
+Route::post('/findpw', [FindController::class, 'find'])->name('su.pw');
 
-Route::post('/findid',[FindController::class, 'find'])->name('su.id');
+Route::get('/findid', [FrontController::class, 'fid']);
 
-Route::get('/successid',[FrontController::class, 'suid']);
+Route::post('/findid', [FindController::class, 'find'])->name('su.id');
 
+Route::get('/successid', [FrontController::class, 'suid']);
+
+Route::post('/successid', [FindController::class, 'suid'])->name('success');
+
+Route::get('/successpw', [FrontController::class, 'supw']);
+
+Route::post('/successpw', [FindController::class, 'supw'])->name('successpw');
+
+Route::post('/',[ModifyController::class, 'modifypw'])->name('modipw');
+
+Route::get('/mypro', [FrontController::class, 'profile']);
+
+Route::post('/mypro', [ModifyController::class, 'profile'])->name('myprofile');
 
 
 

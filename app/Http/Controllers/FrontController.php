@@ -19,7 +19,6 @@ class FrontController extends BaseController
         if(Auth::check()){
             
         }
-
     }
 
     function index() 
@@ -68,7 +67,6 @@ class FrontController extends BaseController
     {
         return view("front.findid",[
         ]);
-        
     }
 
     function fpw()
@@ -79,7 +77,26 @@ class FrontController extends BaseController
 
     function suid()
     {
-        return view("front.successid",[
+        return view("front.successid",[     
+        ]);
+    }
+
+    function supw()
+    {
+        return view("front.successpw",[     
+        ]);
+    }
+    
+    function modipw()
+    {
+        return view("front.index",[
+
+        ]);
+    }
+
+    function profile()
+    {
+        return view("front.mypro",[
 
         ]);
     }

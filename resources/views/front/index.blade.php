@@ -143,21 +143,25 @@
 
 		</div>
 		<div class="top-section">
-			<div class="inner">
-				<div class="link-box">
-				@if ($isLogin)
-					<!-- 로그인후 -->
-					{{$isLogin[0]}}님
-					<a href="/logout">로그아웃</a>
-					<a href="#">내정보</a>	
-				@else
-					<!-- 로그인전 -->
-					<a href="/hlogin">로그인</a>
-					<a href="/step1">회원가입</a>
-				@endif
-					<a href="#">상담/고객센터</a>
+			<form method="post" action="{{ route("myprofile") }}" name ="form">
+				@csrf
+				<input type="hidden" name="myp" value={{ $isLogin[0] }}>
+				<div class="inner">
+					<div class="link-box">
+					@if ($isLogin)
+						<!-- 로그인후 -->
+						{{$isLogin[0]}}님
+						<a href="/logout">로그아웃</a>	
+						<a href="#" onclick="javascript:document.form.submit();">내정보</a>	
+					@else
+						<!-- 로그인전 -->
+						<a href="/hlogin">로그인</a>
+						<a href="/step1">회원가입</a>
+					@endif
+						<a href="#">상담/고객센터</a>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 	<div id="container">

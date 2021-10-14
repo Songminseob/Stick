@@ -10,7 +10,6 @@
 <title>해커스 HRD</title>
 <meta name="description" content="해커스 HRD" />
 <meta name="keywords" content="해커스, HRD" />
-<meta name="csrf-token" content="{{ csrf_token() }}"> <!-- ajax통신 csrf-token -->
 
 <!-- 파비콘설정 -->
 <link rel="shortcut icon" type="image/x-icon" href="http://img.hackershrd.com/common/favicon.ico" />
@@ -169,90 +168,40 @@
 					<strong>아이디/비밀번호 찾기</strong>
 				</div>
 			</div>
-
 			<ul class="tab-list">
 				<li><a href="/findid">아이디 찾기</a></li>
 				<li class="on"><a href="/findpw">비밀번호 찾기</a></li>
 			</ul>
 
 			<div class="tit-box-h4">
-				<h3 class="tit-h4">비밀번호 찾기 방법 선택</h3>
+				<h3 class="tit-h4">비밀번호 재설정</h3>
 			</div>
-
-			<dl class="find-box" id="pauth">
-				<dt>휴대폰 인증</dt>
-				<dd>
-					고객님이 회원 가입 시 등록한 휴대폰 번호와 입력하신 휴대폰 번호가 동일해야 합니다.
-					<label class="input-sp big">
-						<input type="radio" name="radio" checked />
-						<span class="input-txt"></span>
-					</label>
-				</dd>
-			</dl>
-
-			<dl class="find-box" id="eauth">
-				<dt>이메일 인증</dt>
-				<dd>
-					고객님이 회원 가입 시 등록한 이메일 주소와 입력하신 이메일 주소가 동일해야 합니다.
-					<label class="input-sp big">
-						<input type="radio" name="radio"/>
-						<span class="input-txt"></span>
-					</label>
-				</dd>
-			</dl>
 
 			<div class="section-content mt30">
 				<table border="0" cellpadding="0" cellspacing="0" class="tbl-col-join">
-					<caption class="hidden">아이디/비밀번호 찾기 개인정보입력</caption>
+					<caption class="hidden">비밀번호 재설정</caption>
 					<colgroup>
-						<col style="width:15%"/>
+						<col style="width:17%"/>
 						<col style="*"/>
 					</colgroup>
-
+			<form method="post" action="{{ route('modipw') }}">
+				@csrf
+				<input type="hidden" name='pname' value={{ $user[0]->name }}>
 					<tbody>
 						<tr>
-							<th scope="col">아이디</th>
-							<td><input type="text" class="input-text" style="width:302px" /></td>
+							<th scope="col">신규 비밀번호 입력</th>
+							<td><input type="password" class="input-text" placeholder="영문자로 시작하는 4~15자의 영문소문자,숫자" style="width:302px" name ="password1"/></td>
 						</tr>
-						<tr id ="emailaddr" style="display: none">
-							<th scope="col">이메일주소</th>
-							<td>
-								<input type="text" class="input-text" style="width:138px" id="email1" /> @ <input type="text" class="input-text" style="width:138px" id="email2"/>
-								<select class="input-sel" style="width:160px">
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-								</select>
-								<button class="btn-s-tin ml10" id="ajax_ebtn">인증번호 받기</button>
-							</td>
-						</tr>
-
-						<tr id = "phoneaddr">
-							<th scope="col">휴대폰 번호</th>
-								<td>
-									<input type="text" class="input-text" name ="phone1" id="phone1" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='3' required/> - 
-									<input type="text" class="input-text" name ="phone2" id="phone2" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' required/> - 
-									<input type="text" class="input-text" name ="phone3" id="phone3" style="width:50px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' required/>
-									<button class="btn-s-tin ml10" id="ajax_pbtn">인증번호 받기</button>
-								</td>
-							</tr>
 						<tr>
-							<form method="post" action="{{ route('successpw') }}">
-								@csrf
-								<th scope="col">인증번호</th>
-								<td>
-									<input type="hidden" name="phone" id="phoneid"/>
-									<input type="hidden" name="email" id="emailid"/>
-									<input type="text" class="input-text" style="width:478px" id="input4" />
-									<button class="btn-s-tin ml10" id="btn2" disabled = false;>인증번호 확인</button>
-								</td>
-							</form>
+							<th scope="col">신규 비밀번호 재확인</th>
+							<td><input type="password" class="input-text" style="width:302px" name="password2" /></td>
 						</tr>
 					</tbody>
 				</table>
-
+				<div class="box-btn">
+					<button class="btn-l" id="btn1">확인</button>
+				</div>
+			</form>
 			</div>
 		</div>
 	</div>
@@ -282,120 +231,40 @@
 </div>
 </body>
 <script>
+
 	$(document).ready(function(){
 		
-		var input1;
-		var input2;
-		var input3;
-		var input4;
-
-		var sk = "123456";
-		sessionStorage.setItem("인증번호", sk);
-		
-
-		$("#pauth").click(function(){
-			$("#emailaddr").hide();
-			$("#phoneaddr").show();
-		})
-		$("#eauth").click(function(){
-			$("#emailaddr").show();
-			$("#phoneaddr").hide();
-		})
-
-		$("#ajax_pbtn").click(function(){
-
-			let phone;
-			var input1 = $('#phone1').val();
-			var input2 = $('#phone2').val();
-			var input3 = $('#phone3').val();
+		$("#btn1").click(function(){
 			
-			phone = $("input[name=phone1]").val() + '-' + $("input[name=phone2]").val() + '-' + $("input[name=phone3]").val()
+			var input1;
+			var input2;
 
-			if(input1 == "" || input2 == "" || input3 == "")
-			{
-				alert('휴대폰번호를 올바르게 입력해주세요.');
-			}
+			input1 = $("input[name=password1]").val();
+			input2 = $("input[name=password2]").val();
 
-			if(input1.length<3 || input2.length<4 || input3.length<4){
-				alert('휴대폰번호를 올바르게 입력해주세요.');
-			}
-			
-			$('#phoneid').val(phone);
-
-			$.ajax(
-				{
-					headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-					type:"json",
-					method:"POST",
-					url:"{{route('su.pw')}}",
-					data:{phone}, 
-					dataType: "json", 
-					success:function(){
-						alert("인증번호가 발송되었습니다.");
-						$("#btn2").attr('disabled',false);
-					},
-					error:function(err){
-						if (err.status == 422) {
-							alert("등록되지 않은 휴대폰번호입니다.");
-						}
-					}
-				}
-			)
-
-		});
-
-		$("#ajax_ebtn").click(function(){
-
-			let email;
-			var input1 = $('#email1').val();
-			var input2 = $('#email2').val();
-
-			email = $("#email1").val() + '@' + $("#email2").val()
-
-			if(input1 == "" || input2 == ""){
-				alert('이메일주소를 올바르게 입력해주세요.');
-			}
-
-			$('#emailid').val(email);
-
-			$.ajax(
-				{
-					headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-					type:"json",
-					method:"POST",
-					url:"{{route('su.pw')}}",
-					data:{email}, 
-					dataType: "json", 
-					success:function(){
-						alert("인증번호가 발송되었습니다.");
-						$("#btn2").attr('disabled',false);
-					},
-					error:function(err){
-						if (err.status == 423) {
-							alert("등록되지 않은 이메일입니다.");
-						}
-					}
-				}
-			)
-		});
-
-		$("#btn2").click(function(){
-
-			var input4 = $('#input4').val();	
-	
-			if(input4 == sessionStorage.getItem("인증번호")){
-				alert('인증번호를 확인하였습니다.');
-			}
-			else{
-				alert('인증번호를 다시 확인해주세요.');
+			if(input1 != input2){
+				alert("비밀번호가 다릅니다.");
 				return false;
 			}
+			else if(input1=="" || input2==""){
+				alert("신규 비밀번호를 입력해주세요.");
+				return false;
+			}
+			else if(input1.length<8 || input2.length<8){
+				alert("비밀번호가 너무 짧습니다.");
+				return false;
+			}
+			else if(input1.length>15 || input2.length>15){
+				alert("비밀번호가 너무 깁니다.");
+				return false;
+			}
+			else{
+				alert("비밀번호가 변경되었습니다. 다시 로그인 해주세요.")
+			}
 
-		})
+		});
 
 	})
-	
 
 </script>
-
 </html>

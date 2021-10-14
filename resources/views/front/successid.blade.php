@@ -146,8 +146,8 @@
 			<div class="inner">
 				<div class="link-box">
 					<!-- 로그인전 -->
-					<a href="#">로그인</a>
-					<a href="#">회원가입</a>
+					<a href="/hlogin">로그인</a>
+					<a href="/step1">회원가입</a>
 					<a href="#">상담/고객센터</a>
 					<!-- 로그인후 -->
 					<!-- <a href="#">로그아웃</a>
@@ -169,8 +169,8 @@
 			</div>
 
 			<ul class="tab-list">
-				<li class="on"><a href="#">아이디 찾기</a></li>
-				<li><a href="#">비밀번호 찾기</a></li>
+				<li class="on"><a href="/findid">아이디 찾기</a></li>
+				<li><a href="/findpw">비밀번호 찾기</a></li>
 			</ul>
 
 			<div class="tit-box-h4">
@@ -178,13 +178,13 @@
 			</div>
 
 			<div class="guide-box">
-				<p class="fs16 mb5">이진아 회원님의 아이디는 아래와 같습니다.</p>
-				<strong class="big-title tc-brand">rreamon7</strong>
+				<p class="fs16 mb5">{{ $user[0]->name }}님의 아이디는 아래와 같습니다.</p>
+				<strong class="big-title tc-brand">{{ $user[0]->user_id }}</strong>
 			</div>
 
 			<div class="box-btn mt30">
-				<a href="#" class="btn-l">로그인하러 가기</a>
-				<a href="#" class="btn-l-line ml5">비밀번호 찾기</a>
+				<a href="/hlogin" class="btn-l">로그인하러 가기</a>
+				<a href="/findpw" class="btn-l-line ml5">비밀번호 찾기</a>
 			</div>
 
 		</div>

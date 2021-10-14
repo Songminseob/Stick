@@ -20,41 +20,70 @@ class FindController extends BaseController
 {
     use AuthenticatesUsers;
 
-    
-
     function find(Request $request)
     {
-        
-        $phone = $request->input('phone'); //ajax에서 넘긴 data(phone)
+        if($request->input('phone')){
+            $pdata = $request->input('phone');
+            $pphone = DB::table('users')->where('phone', $pdata)->get();
 
-        $result = DB::table('users')->where('phone', $phone)->get();  //where('phone', 여기에 request 값을 안넣어줘서 값이 안넘어왔었음)
-
-        if ($result->count() < 1) {
-            return response()
-                ->json(null, 400);
+            if($pphone->count()<1){
+                return response() -> json(null,422);
+            }
+            else{
+                return response() -> json($pphone);
+            }
         }
-
-        return response()
-            ->json($result);
-
-        
-        // if($result==1){
-        //     return $result=1;
-        // }
-        // else{
-        //     return $result=0;
-        // }
-
-        // if($result==) {
-        //     echo "test";
-        // } else {
-        //     echo "test2";
-        // }
-
-        // return $result;
+        else{
+            $edata = $request->input('email');
+            $pemail = DB::table('users')->where('email', $edata)->get();
+            if($pemail->count()<1){
+                return response() -> json(null,423);
+            }
+            else{
+                return response() -> json($pemail);
+            }
+        }
     }
-    
 
+    function suid(Request $request)
+    {
+        if($request->input('phone')){
+            $pdata = $request->input('phone');
+            $pphone = DB::table('users')->where('phone', $pdata)->get(); 
+
+            return view("front.successid",[
+                'user' => $pphone
+            ]);
+        }
+        else{
+            $edata = $request->input('email');
+            $pemail = DB::table('users')->where('email', $edata)->get();
+
+            return view("front.successid",[
+                'user' => $pemail
+            ]);
+        }
+    }
+
+    function supw(Request $request)
+    {
+        if($request->input('phone')){
+            $pdata = $request->input('phone');
+            $pphone = DB::table('users')->where('phone', $pdata)->get(); 
+
+            return view("front.successpw",[
+                'user' => $pphone
+            ]);
+        }
+        else{
+            $edata = $request->input('email');
+            $pemail = DB::table('users')->where('email', $edata)->get();
+
+            return view("front.successpw",[
+                'user' => $pemail
+            ]);
+        }
+    }
 
 
 }
