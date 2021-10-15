@@ -44,7 +44,7 @@
 		
 		<div class="nav-section">
 			<div class="inner p-r">
-				<h1><a href="/"><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
+				<h1><a href="#"><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
 				<div class="nav-box">
 					<h2 class="hidden">주메뉴 시작</h2>
 					
@@ -143,35 +143,31 @@
 
 		</div>
 		<div class="top-section">
-			<form method="post" action="{{ route("myprofile") }}" name ="form">
-				@csrf
-				<input type="hidden" name="myp" value={{ $isLogin[0] }}>
-				<div class="inner">
-					<div class="link-box">
-					@if ($isLogin)
-						<!-- 로그인후 -->
-						{{$isLogin[0]}}님
-						<a href="/logout">로그아웃</a>	
-						<a href="#" onclick="javascript:document.form.submit();">내정보</a>	
-					@else
-						<!-- 로그인전 -->
-						<a href="/hlogin">로그인</a>
-						<a href="/step1">회원가입</a>
-					@endif
-						<a href="#">상담/고객센터</a>
-					</div>
+			<div class="inner">
+				<div class="link-box">
+				@if ($isLogin)
+					<!-- 로그인후 -->
+					{{$isLogin[0]}}님
+					<a href="{{ route("logout") }}">로그아웃</a>	
+					<a href="{{ route("mypro") }}">내정보</a>
+				@else
+					<!-- 로그인전 -->
+					<a href="/hlogin">로그인</a>
+					<a href="/step1">회원가입</a>
+				@endif
+					<a href="#">상담/고객센터</a>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 	<div id="container">
 	<div class="main-slider-applyclass">
 		<div id="applyclass" class="slider-applyclass col4"><!-- 갯수 1개 class="col1" / 갯수 2개 class="col2"  -->
 			<ul class="bxslider">
-				<li style="background-color:#f00"><a href="#" target="_blank"><img src="http://prep.champstudy.com/files/banner/f5de95619de01ed9517dbdea717f5f34.jpg" alt="" width="1000" height="350" /></a></li>
-				<li style="background-color:#0f0"><a href="#" target="_blank"><img src="http://prep.champstudy.com/files/banner/af3751c41a59265cd6f7a7f0845cfd06.jpg" alt="" width="1000" height="350" /></a></li>
-				<li style="background-color:#00f"><a href="#" target="_blank"><img src="http://prep.champstudy.com/files/banner/63fe4d746b676398f6371de4f6b4c015.jpg" alt="" width="1000" height="350" /></a></li>
-				<li style="background-color:#e7e7e7"><a href="#" target="_blank"><img src="http://prep.champstudy.com/files/banner/a8a7dd7a6709de9439a1ab17f5779646.jpg" alt="" width="1000" height="350" /></a></li>
+				<li style="background-color:#f00"><a href="#" target="_blank"><img alt="" width="1000" height="350" /></a></li>
+				<li style="background-color:#0f0"><a href="#" target="_blank"><img  alt="" width="1000" height="350" /></a></li>
+				<li style="background-color:#00f"><a href="#" target="_blank"><img  alt="" width="1000" height="350" /></a></li>
+				<li style="background-color:#e7e7e7"><a href="#" target="_blank"><img  alt="" width="1000" height="350" /></a></li>
 			</ul>
 			<div id="bx-pager-apply" class="page-applyclass">
 				<a data-slide-index="0" href="#">오픈이벤트</a>
@@ -514,7 +510,7 @@
 </div>
 <div id="footer" class="footer">
 		<div class="inner p-r">
-			<img src="http://img.hackershrd.com/common/logo_footer.png" class="logo-footer" alt="해커스 HRD LOGO" width="165" height="37"/>
+			<img src="http://img.hackershrd.com/common/logo_footer.png" disable class="logo-footer" alt="해커스 HRD LOGO" width="165" height="37"/>
 			<div class="site-info">
 				<div class="link-box">
 					<a href="#">해커스 소개</a>
@@ -535,6 +531,7 @@
 	</div>
 </div>
 </body>
+@include('sweetalert::alert')
 </html>
 
 
@@ -559,4 +556,5 @@ $(document).ready(function(){
 		slider.startAuto();
 	});
 });
+
 </script>

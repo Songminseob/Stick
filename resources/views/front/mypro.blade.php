@@ -4,6 +4,7 @@
 <!--[if (IE 7)]><html class="no-js ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
 <!--[if (IE 8)]><html class="no-js ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" id="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>해커스 HRD</title>
@@ -143,18 +144,15 @@
 		</div>
 
 		<div class="top-section">
-			<div class="inner">
-				<div class="link-box">
-					<!-- 로그인전 -->
-					<a href="#">로그인</a>
-					<a href="#">회원가입</a>
-					<a href="#">상담/고객센터</a>
-					<!-- 로그인후 -->
-					<!-- <a href="#">로그아웃</a>
-					<a href="#">내정보</a>
-					<a href="#">상담/고객센터</a> -->
+				<div class="inner">
+					<div class="link-box">
+						{{$user[0]->user_id }}님
+						<a href="/logout">로그아웃</a>	
+						<a href="#" >내정보</a>
+						<a href="#">상담/고객센터</a>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 <div id="container" class="container-full">
@@ -167,15 +165,16 @@
 					<strong>내정보수정</strong>
 				</div>
 			</div>
-
 			<div class="section-content">
+				<form method="post" action="{{ route('modi.pro') }}">
+					@csrf	
+					<input type='hidden' name='name' value={{ $user[0]->name }}>
 				<table border="0" cellpadding="0" cellspacing="0" class="tbl-col-join">
 					<caption class="hidden">강의정보</caption>
 					<colgroup>
 						<col style="width:15%"/>
 						<col style="*"/>
-					</colgroup>
-
+					</colgroup>			
 					<tbody>
 						<tr>
 							<th scope="col"><span class="icons">*</span>이름</th>
@@ -183,20 +182,22 @@
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons">*</span>아이디</th>
-							<td><input type="text" class="input-text" style="width:302px" placeholder="영문자로 시작하는 4~15자의 영문소문자, 숫자"/><a href="#" class="btn-s-tin ml10">중복확인</a></td>
+							<td>{{ $user[0]->user_id }}</td>
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons">*</span>비밀번호</th>
-							<td><input type="password" class="input-text" style="width:302px" placeholder="8-15자의 영문자/숫자 혼합"/></td>
+							<td><input type="password" class="input-text" style="width:302px" placeholder="8-15자의 영문자/숫자 혼합" name="password1" required minlength='8' maxlength='15'/></td>
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons">*</span>비밀번호 확인</th>
-							<td><input type="password" class="input-text" style="width:302px"/></td>
+							<td><input type="password" class="input-text" style="width:302px" name="password2" required minlength='8' maxlength='15'/></td>
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons">*</span>이메일주소</th>
 							<td>
-								<input type="text" class="input-text" style="width:138px"/> @ <input type="text" class="input-text" style="width:138px"/>
+								<input type="hidden" name="email" id="emailid"/>
+								<input type="text" class="input-text" style="width:138px" name="email1" id="email1" required/> @ 
+								<input type="text" class="input-text" style="width:138px" name="domain" id="domain" required/>
 								<select class="input-sel" style="width:160px">
 									<option value="">선택입력</option>
 									<option value="">선택입력</option>
@@ -208,23 +209,28 @@
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons">*</span>휴대폰 번호</th>
-							<td>010-9999-9999</td>
+							<td>{{ $user[0]->phone }}</td>
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons"></span>일반전화 번호</th>
-							<td><input type="text" class="input-text" style="width:88px"/> - <input type="text" class="input-text" style="width:88px"/> - <input type="text" class="input-text" style="width:88px"/></td>
+							<td>
+								<input type="hidden" name="tel" id="telid"/>
+								<input type="text" class="input-text" style="width:88px" id="tel1"/> -
+								<input type="text" class="input-text" style="width:88px" id="tel2"/> -
+								<input type="text" class="input-text" style="width:88px" id="tel3"/>
+							</td>
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons">*</span>주소</th>
 							<td>
 								<p >
-									<label>우편번호 <input type="text" class="input-text ml5" style="width:242px" disabled /></label><a href="#" class="btn-s-tin ml10">주소찾기</a>
+									<label>우편번호 <input type="text" class="input-text ml5" style="width:242px" name="addr1" maxlength='15' required/></label><a href="#" class="btn-s-tin ml10">주소찾기</a>
 								</p>
 								<p class="mt10">
-									<label>기본주소 <input type="text" class="input-text ml5" style="width:719px"/></label>
+									<label>기본주소 <input type="text" class="input-text ml5" style="width:719px" name="addr2" maxlength='30' required/></label>
 								</p>
 								<p class="mt10">
-									<label>상세주소 <input type="text" class="input-text ml5" style="width:719px"/></label>
+									<label>상세주소 <input type="text" class="input-text ml5" style="width:719px" name="addr3" maxlength='30' required/></label>
 								</p>
 							</td>
 						</tr>
@@ -233,11 +239,11 @@
 							<td>
 								<div class="box-input">
 									<label class="input-sp">
-										<input type="radio" name="radio" id="" checked="checked"/>
+										<input type="radio" name="smsre" value="1" checked="checked"/>
 										<span class="input-txt">수신함</span>
 									</label>
 									<label class="input-sp">
-										<input type="radio" name="radio" id="" />
+										<input type="radio" name="smsre" value="0" />
 										<span class="input-txt">미수신</span>
 									</label>
 								</div>
@@ -249,11 +255,11 @@
 							<td>
 								<div class="box-input">
 									<label class="input-sp">
-										<input type="radio" name="radio2" id="" checked="checked"/>
+										<input type="radio" name="emare" value="1" checked="checked"/>
 										<span class="input-txt">수신함</span>
 									</label>
 									<label class="input-sp">
-										<input type="radio" name="radio2" id="" />
+										<input type="radio" name="emare" value="0" />
 										<span class="input-txt">미수신</span>
 									</label>
 								</div>
@@ -262,10 +268,10 @@
 						</tr>
 					</tbody>
 				</table>
-
 				<div class="box-btn">
-					<a href="#" class="btn-l">정보수정</a>
+					<button class='btn-l'>정보수정</button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -294,4 +300,22 @@
 	</div>
 </div>
 </body>
+@include('sweetalert::alert')
+<script>
+	$(document).ready(function(){
+
+		$(".btn-l").click(function(){
+
+			let email;
+			let tel;
+
+			email = $("#email1").val() + '@' + $("#domain").val()
+			tel = $("#tel1").val() + '-' + $("#tel2").val() + '-' + $("#tel3").val()
+			$("#emailid").val(email);
+			$("#telid").val(tel);
+
+		})
+
+	})
+</script>
 </html>

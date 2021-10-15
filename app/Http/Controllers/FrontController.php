@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\User;
 
+use Illuminate\Http\Request;
+
 class FrontController extends BaseController
 {
     public $session;
@@ -21,8 +23,11 @@ class FrontController extends BaseController
         }
     }
 
-    function index() 
+    function index(Request $request) 
     {
+        $user = $request->session()->get('user');
+        print_r($user);
+        exit;
         return view("front.index", ['isLogin' => $this->isLogin, 'user' => $this->user]);
     }
 
@@ -96,8 +101,10 @@ class FrontController extends BaseController
 
     function profile()
     {
-        return view("front.mypro",[
+        
 
+        return view("front.mypro",[
+            'isLogin' => $this->isLogin
         ]);
     }
 

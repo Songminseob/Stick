@@ -48,12 +48,18 @@ Route::get('/successpw', [FrontController::class, 'supw']);
 
 Route::post('/successpw', [FindController::class, 'supw'])->name('successpw');
 
-Route::post('/',[ModifyController::class, 'modifypw'])->name('modipw');
+Route::post('/', [ModifyController::class, 'modifypw'])->name('modipw');
 
-Route::get('/mypro', [FrontController::class, 'profile']);
+Route::get('/mypro', [FrontController::class, 'profile'])->name('mypro');
 
 Route::post('/mypro', [ModifyController::class, 'profile'])->name('myprofile');
 
+Route::post('/mypro', function(){
+
+    return redirect('profile')->with('status');
+});
+
+Route::post('/', [ModifyController::class, 'modipro'])->name('modi.pro');
 
 
 Auth::routes();

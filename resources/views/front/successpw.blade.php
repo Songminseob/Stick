@@ -236,8 +236,8 @@
 		
 		$("#btn1").click(function(){
 			
-			var input1;
-			var input2;
+			let input1;
+			let input2;
 
 			input1 = $("input[name=password1]").val();
 			input2 = $("input[name=password2]").val();

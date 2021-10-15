@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!--[if (IE 7)]><html class="no-js ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
 <!--[if (IE 8)]><html class="no-js ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" id="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>해커스 HRD</title>
@@ -216,7 +216,8 @@
 								<th scope="col"><span class="icons">*</span>이메일주소</th>
 								<td>
 									<input type="hidden" name ="email" id="emailid"/>
-									<input type="text" name="email1" class="input-text" id ="email1" style="width:138px" maxlength='15' required/> @ <input type="text" name="domain" id="domain" class="input-text" style="width:138px" maxlength='15' required/>
+									<input type="text" name="email1" class="input-text" id ="email1" style="width:138px" maxlength='15' required/> @ 
+									<input type="text" name="domain" id="domain" class="input-text" style="width:138px" maxlength='15' required/>
 									<select class="input-sel" style="width:160px">
 										<option value="">선택입력</option>
 										<option value="">선택입력</option>
@@ -300,7 +301,7 @@
 					</table>
 
 					<div class="box-btn">
-						<button type="submit" class="btn-l" onClick="sub()">회원가입</button>
+						<button class="btn-l">회원가입</button>
 					</div>
 
 				</form>
@@ -349,7 +350,7 @@
 			$("input[name=phone]").val(phone);
 			$("#emailid").val(email);
 			$("#telid").val(tel);
-	
+			
 		})
 	})
 
