@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\User;
+use App\Http\Controllers\json_decode;
 
 use Illuminate\Http\Request;
 
@@ -17,17 +18,12 @@ class FrontController extends BaseController
     function __construct() {
 
         // 세션을 이용한 로그인 체크
-        // $isLogin = true;
-        if(Auth::check()){
-            
-        }
+        // 
     }
 
     function index(Request $request) 
     {
         $user = $request->session()->get('user');
-        print_r($user);
-        exit;
         return view("front.index", ['isLogin' => $this->isLogin, 'user' => $this->user]);
     }
 
@@ -63,8 +59,9 @@ class FrontController extends BaseController
         ]);
     }
 
-    function logout()
+    function logout(Request $request)
     {
+        $user = $request->session()->forget('user');
         return view("front.index", ['isLogin' => Auth::logout()]);//로그인세션 로그아웃
     }
     
@@ -99,12 +96,21 @@ class FrontController extends BaseController
         ]);
     }
 
-    function profile()
+    function profile(Request $request)
     {
-        
+        $user = $request->session()->get('user');
 
         return view("front.mypro",[
-            'isLogin' => $this->isLogin
+            'user' => $user
+        ]);
+    }
+
+    function list(Request $request)
+    {
+        $user = $request->session()->get('user');
+
+        return view("front.list",[
+            'isLogin' => $this->isLogin, 'user' => $user
         ]);
     }
 

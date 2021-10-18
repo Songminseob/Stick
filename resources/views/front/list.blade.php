@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <!--[if (IE 7)]><html class="no-js ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
@@ -44,7 +43,7 @@
 		
 		<div class="nav-section">
 			<div class="inner p-r">
-				<h1><a href="#"><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
+				<h1><a href="/"><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
 				<div class="nav-box">
 					<h2 class="hidden">주메뉴 시작</h2>
 					
@@ -142,142 +141,155 @@
 			</div>
 
 		</div>
-
 		<div class="top-section">
-				<div class="inner">
-					<div class="link-box">
-						<!-- 로그인후 -->
-						{{$user[0]->user_id}}님
-						<a href="{{ route("logout") }}">로그아웃</a>	
-						<a href="{{ route("mypro") }}">내정보</a>
-						<a href="#">상담/고객센터</a>
-					</div>
+			<div class="inner">
+				<div class="link-box">
+				
+				@if ($user)
+					<!-- 로그인후 -->
+					{{$user[0]->user_id}}님
+					<a href="{{ route("logout") }}">로그아웃</a>	
+					<a href="{{ route("mypro") }}">내정보</a>
+				@else
+					<!-- 로그인전 -->
+					<a href="/hlogin">로그인</a>
+					<a href="/step1">회원가입</a>
+				@endif
+					<a href="#">상담/고객센터</a>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
-<div id="container" class="container-full">
-	<div id="content" class="content">
-		<div class="inner">
+
+	<div id="container" class="container">
+
+		<div id="nav-left" class="nav-left">
+			<div class="nav-left-tit"> 
+				<span>직무교육 안내</span>
+			</div>
+			<ul class="nav-left-lst">
+				<li><a href="#">해커스 HRD 소개</a></li>
+				<li><a href="#">사업주훈련</a></li>
+				<li><a href="#">근로자카드</a></li>
+				<li><a href="#">학습안내</a></li>
+				<li class="on"><a href="/lecture_board/index.php?mode=list">수강후기</a></li>
+			</ul>
+		</div>
+
+		<div id="content" class="content">
 			<div class="tit-box-h3">
-				<h3 class="tit-h3">내정보수정</h3>
+				<h3 class="tit-h3">수강후기</h3>
 				<div class="sub-depth">
 					<span><i class="icon-home"><span>홈</span></i></span>
-					<strong>내정보수정</strong>
+					<span>직무교육 안내</span>
+					<strong>수강후기</strong>
 				</div>
 			</div>
-			<div class="section-content">
-				<form method="post" action="{{ route('modi.pro') }}">
-					@csrf	
-				<table border="0" cellpadding="0" cellspacing="0" class="tbl-col-join">
-					<caption class="hidden">강의정보</caption>
-					<colgroup>
-						<col style="width:15%"/>
-						<col style="*"/>
-					</colgroup>			
-					<tbody>
-						<tr>
-							
-							<th scope="col"><span class="icons">*</span>이름</th>
-							{{-- <td>{{ $user[0]->name }}</td> --}}
-							<td><input type="text" class="input-text" style="width:302px" placeholder="{{ $user[0]->name }}" default="{{ $user[0]->name }}" name="name"/></td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>아이디</th>
-							<td>{{ $user[0]->user_id }}</td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>비밀번호</th>
-							<td><input type="password" class="input-text" style="width:302px" placeholder="8-15자의 영문자/숫자 혼합" name="password1" required minlength='8' maxlength='15'/></td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>비밀번호 확인</th>
-							<td><input type="password" class="input-text" style="width:302px" name="password2" required minlength='8' maxlength='15'/></td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>이메일주소</th>
-							<td>
-								<input type="hidden" name="email" id="emailid"/>
-								<input type="text" class="input-text" style="width:138px" name="email1" id="email1" required/> @ 
-								<input type="text" class="input-text" style="width:138px" name="domain" id="domain" required/>
-								<select class="input-sel" style="width:160px">
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-									<option value="">선택입력</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>휴대폰 번호</th>
-							<td>{{ $user[0]->phone }}</td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons"></span>일반전화 번호</th>
-							<td>
-								<input type="hidden" name="tel" id="telid"/>
-								<input type="text" class="input-text" style="width:88px" id="tel1"/> -
-								<input type="text" class="input-text" style="width:88px" id="tel2"/> -
-								<input type="text" class="input-text" style="width:88px" id="tel3"/>
-							</td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>주소</th>
-							<td>
-								<p >
-									<label>우편번호 <input type="text" class="input-text ml5" style="width:242px" name="addr1" maxlength='15' required/></label><a href="#" class="btn-s-tin ml10">주소찾기</a>
-								</p>
-								<p class="mt10">
-									<label>기본주소 <input type="text" class="input-text ml5" style="width:719px" name="addr2" maxlength='30' required/></label>
-								</p>
-								<p class="mt10">
-									<label>상세주소 <input type="text" class="input-text ml5" style="width:719px" name="addr3" maxlength='30' required/></label>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>SMS수신</th>
-							<td>
-								<div class="box-input">
-									<label class="input-sp">
-										<input type="radio" name="smsre" value="1" checked="checked"/>
-										<span class="input-txt">수신함</span>
-									</label>
-									<label class="input-sp">
-										<input type="radio" name="smsre" value="0" />
-										<span class="input-txt">미수신</span>
-									</label>
-								</div>
-								<p>SMS수신 시, 해커스의 혜택 및 이벤트 정보를 받아보실 수 있습니다.</p>
-							</td>
-						</tr>
-						<tr>
-							<th scope="col"><span class="icons">*</span>메일수신</th>
-							<td>
-								<div class="box-input">
-									<label class="input-sp">
-										<input type="radio" name="emare" value="1" checked="checked"/>
-										<span class="input-txt">수신함</span>
-									</label>
-									<label class="input-sp">
-										<input type="radio" name="emare" value="0" />
-										<span class="input-txt">미수신</span>
-									</label>
-								</div>
-								<p>메일수신 시, 해커스의 혜택 및 이벤트 정보를 받아보실 수 있습니다.</p>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="box-btn">
-					<button class='btn-l'>정보수정</button>
+
+			<ul class="tab-list tab5">
+				<li class="on"><a href="#">전체</a></li>
+				<li><a href="#">일반직무</a></li>
+				<li><a href="#">산업직무</a></li>
+				<li><a href="#">공통역량</a></li>
+				<li><a href="#">어학 및 자격증</a></li>
+			</ul>
+
+			<div class="search-info">
+				<div class="search-form f-r">
+					<select class="input-sel" style="width:158px">
+						<option value="">분류</option>
+					</select>
+					<select class="input-sel" style="width:158px">
+						<option value="">강의명</option>
+						<option value="">작성자</option>
+					</select>
+					<input type="text" class="input-text" placeholder="강의명을 입력하세요." style="width:158px"/>
+					<button type="button" class="btn-s-dark">검색</button>
 				</div>
-				</form>
+			</div>
+
+			<table border="0" cellpadding="0" cellspacing="0" class="tbl-bbs">
+				<caption class="hidden">수강후기</caption>
+				<colgroup>
+					<col style="width:8%"/>
+					<col style="width:8%"/>
+					<col style="*"/>
+					<col style="width:15%"/>
+					<col style="width:12%"/>
+				</colgroup>
+
+				<thead>
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">분류</th>
+						<th scope="col">제목</th>
+						<th scope="col">강좌만족도</th>
+						<th scope="col">작성자</th>
+					</tr>
+				</thead>
+		 
+				<tbody>
+					<!-- set -->
+					<tr class="bbs-sbj">
+						<td><span class="txt-icon-line"><em>BEST</em></span></td>
+						<td>CS</td>
+						<td>
+							<a href="#">
+								<span class="tc-gray ellipsis_line">수강 강의명 : Beyond Trouble, 조직을 감동시키는 관계의 기술</span>
+								<strong class="ellipsis_line">절대 후회 없는 강의 예요!</strong>
+							</a>
+						</td>
+						<td>
+							<span class="star-rating">
+								<span class="star-inner" style="width:80%"></span>
+							</span>
+						</td>
+						<td class="last">이름</td>
+					</tr>
+					<!-- //set -->
+					<!-- set -->
+					<tr class="bbs-sbj">
+						<td>1</td>
+						<td>CS</td>
+						<td>
+							<a href="#">
+								<span class="tc-gray ellipsis_line">수강 강의명 : Beyond Trouble, 조직을 감동시키는 관계의 기술</span>
+								<strong class="ellipsis_line">절대 후회 없는 강의 예요!</strong>
+							</a>
+						</td>
+						<td>
+							<span class="star-rating">
+								<span class="star-inner" style="width:80%"></span>
+							</span>
+						</td>
+						<td class="last">이름</td>
+					</tr>
+					<!-- //set -->
+				</tbody>
+			</table>
+
+			<div class="box-paging">
+				<a href="#"><i class="icon-first"><span class="hidden">첫페이지</span></i></a>
+				<a href="#"><i class="icon-prev"><span class="hidden">이전페이지</span></i></a>
+				<a href="#" class="active">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<a href="#">6</a>
+				<a href="#"><i class="icon-next"><span class="hidden">다음페이지</span></i></a>
+				<a href="#"><i class="icon-last"><span class="hidden">마지막페이지</span></i></a>
+			</div>
+
+			<div class="box-btn t-r" id="write">
+				@if ($user)
+				<a href="/write" class="btn-m" id = "write">후기 작성</a>
+				@else
+				<a href="#" class="btn-m" id = "write">로그인 후 작성 가능합니다.</a>
+				@endif
 			</div>
 		</div>
 	</div>
-</div>
 
 	<div id="footer" class="footer">
 		<div class="inner p-r">
@@ -302,22 +314,5 @@
 	</div>
 </div>
 </body>
-@include('sweetalert::alert')
-<script>
-	$(document).ready(function(){
 
-		$(".btn-l").click(function(){
-
-			let email;
-			let tel;
-
-			email = $("#email1").val() + '@' + $("#domain").val()
-			tel = $("#tel1").val() + '-' + $("#tel2").val() + '-' + $("#tel3").val()
-			$("#emailid").val(email);
-			$("#telid").val(tel);
-
-		})
-
-	})
-</script>
 </html>

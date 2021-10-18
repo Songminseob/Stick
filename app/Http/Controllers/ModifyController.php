@@ -64,6 +64,7 @@ class ModifyController extends BaseController
         $msmsre = $request->input("smsre");
         $mpw = $request->input("password1");
 
+
         $et = DB::table('users')->where('email',$mem)->exists();
         
         if (Hash::needsRehash($mpw))
@@ -75,7 +76,6 @@ class ModifyController extends BaseController
         {
             Alert::warning('오류','이미 존재하는 이메일입니다.');        
             
-            //return redirect('mypro')->with('status');
             return redirect()->action([FrontController::class, 'profile']);
         }
         if($et==false){
@@ -83,6 +83,7 @@ class ModifyController extends BaseController
             DB::table('users')->updateOrInsert(
                 ['name' => $name], 
                 [
+                'name' => $name,
                 'email' => $mem,
                 'tel' => $mtel,
                 'addr1' => $maddr1,
@@ -101,10 +102,6 @@ class ModifyController extends BaseController
 
         }
         
-        
-
     }
-
-
 
 }

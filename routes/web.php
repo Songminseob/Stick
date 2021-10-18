@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\FindController;
 use App\Http\Controllers\ModifyController;
+use App\Http\Controllers\ListController;
 
 
 Route::get('/', [FrontController::class, 'index']);
@@ -48,18 +49,19 @@ Route::get('/successpw', [FrontController::class, 'supw']);
 
 Route::post('/successpw', [FindController::class, 'supw'])->name('successpw');
 
-Route::post('/', [ModifyController::class, 'modifypw'])->name('modipw');
+Route::post('/modipw', [ModifyController::class, 'modifypw'])->name('modipw');
 
 Route::get('/mypro', [FrontController::class, 'profile'])->name('mypro');
 
 Route::post('/mypro', [ModifyController::class, 'profile'])->name('myprofile');
 
-Route::post('/mypro', function(){
+Route::post('/modipro', [ModifyController::class, 'modipro'])->name('modi.pro');
 
-    return redirect('profile')->with('status');
-});
+Route::get('/list', [FrontController::class, 'list'])->name('list');
 
-Route::post('/', [ModifyController::class, 'modipro'])->name('modi.pro');
+Route::get('/write', [ListController::class, 'write']);
+
+Route::post('/writecom', [ListController::class, 'writecom'])->name('write.com');
 
 
 Auth::routes();
