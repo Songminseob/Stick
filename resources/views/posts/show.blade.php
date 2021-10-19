@@ -1,9 +1,9 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <!--[if (IE 7)]><html class="no-js ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
 <!--[if (IE 8)]><html class="no-js ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><![endif]-->
 <head>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" id="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>해커스 HRD</title>
@@ -51,57 +51,57 @@
 						<li class="mnu">
 							<a href="#">일반직무</a>
 							<ul class="nav-sub-lst">
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
+								<li><a href="#">일반직무_01</a></li>
+								<li><a href="#">일반직무_02</a></li>
+								<li><a href="#">일반직무_03</a></li>
+								<li><a href="#">일반직무_04</a></li>
+								<li><a href="#">일반직무_05</a></li>
+								<li><a href="#">일반직무_06</a></li>
+								<li><a href="#">일반직무_07</a></li>
+								<li><a href="#">일반직무_08</a></li>
+								<li><a href="#">일반직무_09</a></li>
 							</ul>
 						</li>
 						<li class="mnu2">
 							<a href="#">산업직무</a>
 							<ul class="nav-sub-lst">
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
+								<li><a href="#">산업직무_01</a></li>
+								<li><a href="#">산업직무_02</a></li>
+								<li><a href="#">산업직무_03</a></li>
+								<li><a href="#">산업직무_04</a></li>
+								<li><a href="#">산업직무_05</a></li>
+								<li><a href="#">산업직무_06</a></li>
+								<li><a href="#">산업직무_07</a></li>
+								<li><a href="#">산업직무_08</a></li>
+								<li><a href="#">산업직무_09</a></li>
 							</ul>
 						</li>
 						<li class="mnu3">
 							<a href="#">공통역량</a>
 							<ul class="nav-sub-lst">
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
+								<li><a href="#">공통역량_01</a></li>
+								<li><a href="#">공통역량_02</a></li>
+								<li><a href="#">공통역량_03</a></li>
+								<li><a href="#">공통역량_04</a></li>
+								<li><a href="#">공통역량_05</a></li>
+								<li><a href="#">공통역량_06</a></li>
+								<li><a href="#">공통역량_07</a></li>
+								<li><a href="#">공통역량_08</a></li>
+								<li><a href="#">공통역량_09</a></li>
 							</ul>
 						</li>
 						<li class="mnu4">
 							<a href="#">어학 및 자격증</a>
 							<ul class="nav-sub-lst">
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
-								<li><a href="#">서브메뉴</a></li>
+								<li><a href="#">어학및자격증_01</a></li>
+								<li><a href="#">어학및자격증_02</a></li>
+								<li><a href="#">어학및자격증_03</a></li>
+								<li><a href="#">어학및자격증_04</a></li>
+								<li><a href="#">어학및자격증_05</a></li>
+								<li><a href="#">어학및자격증_06</a></li>
+								<li><a href="#">어학및자격증_07</a></li>
+								<li><a href="#">어학및자격증_08</a></li>
+								<li><a href="#">어학및자격증_09</a></li>
 							</ul>
 						</li>
 						<li class="mnu5">
@@ -141,9 +141,10 @@
 			</div>
 
 		</div>
+
 		<div class="top-section">
 			<div class="inner">
-				<div class="link-box">		
+				<div class="link-box">
 				@if($user)
 					<!-- 로그인후 -->
 					{{$user[0]->user_id}}님
@@ -159,120 +160,164 @@
 			</div>
 		</div>
 	</div>
+<div id="container" class="container">
+	<div id="nav-left" class="nav-left">
+		<div class="nav-left-tit"> 
+			<span>직무교육 안내</span>
+		</div>
+		<ul class="nav-left-lst">
+			<li><a href="#">해커스 HRD 소개</a></li>
+			<li><a href="#">사업주훈련</a></li>
+			<li><a href="#">근로자카드</a></li>
+			<li><a href="#">학습안내</a></li>
+			<li class="on"><a href="#">수강후기</a></li>
+		</ul>
+	</div>
 
-	<div id="container" class="container">
-
-		<div id="nav-left" class="nav-left">
-			<div class="nav-left-tit"> 
+	<div id="content" class="content">
+		<div class="tit-box-h3">
+			<h3 class="tit-h3">수강후기</h3>
+			<div class="sub-depth">
+				<span><i class="icon-home"><span>홈</span></i></span>
 				<span>직무교육 안내</span>
+				<strong>수강후기</strong>
 			</div>
-			<ul class="nav-left-lst">
-				<li><a href="#">해커스 HRD 소개</a></li>
-				<li><a href="#">사업주훈련</a></li>
-				<li><a href="#">근로자카드</a></li>
-				<li><a href="#">학습안내</a></li>
-				<li class="on"><a href="/lecture_board/index.php?mode=list">수강후기</a></li>
-			</ul>
 		</div>
 
-		<div id="content" class="content">
-			<div class="tit-box-h3">
-				<h3 class="tit-h3">수강후기</h3>
-				<div class="sub-depth">
-					<span><i class="icon-home"><span>홈</span></i></span>
-					<span>직무교육 안내</span>
-					<strong>수강후기</strong>
-				</div>
-			</div>
-
-			<ul class="tab-list tab5">
-				<li class="on"><a href="#">전체</a></li>
-				<li><a href="#">일반직무</a></li>
-				<li><a href="#">산업직무</a></li>
-				<li><a href="#">공통역량</a></li>
-				<li><a href="#">어학 및 자격증</a></li>
-			</ul>
-
-			<div class="search-info">
-				<div class="search-form f-r">
-					<select class="input-sel" style="width:158px">
-						<option value="">분류</option>
-					</select>
-					<select class="input-sel" style="width:158px">
-						<option value="">강의명</option>
-						<option value="">작성자</option>
-					</select>
-					<input type="text" class="input-text" placeholder="강의명을 입력하세요." style="width:158px"/>
-					<button type="button" class="btn-s-dark">검색</button>
-				</div>
-			</div>
-
-			<table border="0" cellpadding="0" cellspacing="0" class="tbl-bbs">
-				<caption class="hidden">수강후기</caption>
-				<colgroup>
-					<col style="width:8%"/>
-					<col style="width:8%"/>
-					<col style="*"/>
-					<col style="width:15%"/>
-					<col style="width:12%"/>
-				</colgroup>
-
-				<thead>
-					<tr>
-						<th scope="col">번호</th>
-						<th scope="col">분류</th>
-						<th scope="col">제목</th>
-						<th scope="col">강좌만족도</th>
-						<th scope="col">작성자</th>
-					</tr>
-				</thead>
-		 
-				<tbody>
-					
-					<!-- set -->
-					@foreach($posts as $post)
-					<tr class="bbs-sbj">
-						<td><span class="txt-icon-line"><em>{{ $post->id }}</em></span></td>
-						<td>{{ $post->bun }}</td>
-						<td>
-							<a href="/posts/{{ $post->id }}">
-								<span class="tc-gray ellipsis_line">수강 강의명 : {{ $post->gang }}</span>
-								<strong class="ellipsis_line">{{ $post->title }}</strong>
-							</a>
-						</td>
-						<td>
+		<table border="0" cellpadding="0" cellspacing="0" class="tbl-bbs-view">
+			<caption class="hidden">수강후기</caption>
+			<colgroup>
+				<col style="*"/>
+				<col style="width:20%"/>
+			</colgroup>
+			<tbody>
+				 <tr>
+					<th scope="col">{{ $post->title }}</th>
+					<th scope="col" class="user-id">작성자 | {{ $post->user_id }}</th>
+				 </tr>
+				<tr>
+					<td colspan="2">
+						<div class="box-rating">
+							<span class="tit_rating">강의만족도</span>
 							{{ $post->star }}
-						</td>
-						<td class="last">{{$post->user_id}}</td>
-					</tr>
-					@endforeach
-					<!-- //set -->
-				
-				</tbody>
-			</table>
+						</div>
+						{{ $post->title }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+		<p class="mb15"><strong class="tc-brand fs16">{{ $post->user_id }}님의 수강하신 강의 정보</strong></p>
+		
+		<table border="0" cellpadding="0" cellspacing="0" class="tbl-lecture-list">
+			<caption class="hidden">강의정보</caption>
+			<colgroup>
+				<col style="width:166px"/>
+				<col style="*"/>
+				<col style="width:110px"/>
+			</colgroup>
+			<tbody>
+				<tr>
+					<td>
+						<a href="#" class="sample-lecture">
+							<img src="http://via.placeholder.com/144x101" alt="" width="144" height="101" />
+							<span class="tc-brand">샘플강의 ▶</span>
+						</a>
+					</td>
+					<td class="lecture-txt">
+						<em class="tit mt10">Beyond Trouble, 조직을 감동시키는 관계의 기술</em>
+						<p class="tc-gray mt20">강사: 최환규 | 학습난이도 : 하 | 교육시간: 18시간 (18강)</p>
+					</td>
+					<td class="t-r"><a href="#" class="btn-square-line">강의<br />상세</a></td>
+				</tr>
+			</tbody>
+		</table>
 
-			<div class="box-paging">
-				<a href="#"><i class="icon-first"><span class="hidden">첫페이지</span></i></a>
-				<a href="#"><i class="icon-prev"><span class="hidden">이전페이지</span></i></a>
-				<a href="#" class="active">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">6</a>
-				<a href="#"><i class="icon-next"><span class="hidden">다음페이지</span></i></a>
-				<a href="#"><i class="icon-last"><span class="hidden">마지막페이지</span></i></a>
-			</div>
+		
+			<a href="{{ route("posts") }}" class="btn-m-gray">목록</a>
 
-			<div class="box-btn t-r" id="write">
-				@if ($user)
-				<a href="{{ route("create") }}" class="btn-m" id = "write">후기 작성</a>
-				@else
-				<a href="#" class="btn-m" id = "write">로그인 후 작성 가능합니다.</a>
-				@endif
+			<a href="{{ route("edit", $post) }}" class="btn-m ml5">수정</a>
+
+			<form method="POST" action="/posts/{{ $post->id }}">
+				@csrf
+				@method('delete')
+			<button class="btn-m-dark">삭제</button>
+			</form>
+			
+	
+
+		<div class="search-info">
+			<div class="search-form f-r">
+				<select class="input-sel" style="width:158px">
+					<option value="">분류</option>
+				</select>
+				<select class="input-sel" style="width:158px">
+					<option value="">강의명</option>
+					<option value="">작성자</option>
+				</select>
+				<input type="text" class="input-text" placeholder="강의명을 입력하세요." style="width:158px"/>
+				<button type="button" class="btn-s-dark">검색</button>
 			</div>
+		</div>
+
+		<table border="0" cellpadding="0" cellspacing="0" class="tbl-bbs">
+			<caption class="hidden">수강후기</caption>
+			<colgroup>
+				<col style="width:8%"/>
+				<col style="width:8%"/>
+				<col style="*"/>
+				<col style="width:15%"/>
+				<col style="width:12%"/>
+			</colgroup>
+
+			<thead>
+				<tr>
+					<th scope="col">번호</th>
+					<th scope="col">분류</th>
+					<th scope="col">제목</th>
+					<th scope="col">강의만족도</th>
+					<th scope="col">작성자</th>
+				</tr>
+			</thead>
+	 
+			<tbody>
+				<!-- set -->
+				<tr class="bbs-sbj">
+					<td>1</td>
+					<td>CS</td>
+					<td>
+						<a href="#">
+							<span class="tc-gray ellipsis_line">수강 강의명 : Beyond Trouble, 조직을 감동시키는 관계의 기술</span>
+							<strong class="ellipsis_line">절대 후회 없는 강의 예요!</strong>
+						</a>
+					</td>
+					<td>
+						<span class="star-rating">
+							<span class="star-inner" style="width:80%"></span>
+						</span>
+					</td>
+					<td class="last">이름</td>
+				</tr>
+				<!-- //set -->
+			</tbody>
+		</table>
+
+		<div class="box-paging">
+			<a href="#"><i class="icon-first"><span class="hidden">첫페이지</span></i></a>
+			<a href="#"><i class="icon-prev"><span class="hidden">이전페이지</span></i></a>
+			<a href="#" class="active">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+			<a href="#"><i class="icon-next"><span class="hidden">다음페이지</span></i></a>
+			<a href="#"><i class="icon-last"><span class="hidden">마지막페이지</span></i></a>
 		</div>
 	</div>
+</div>
+
 
 	<div id="footer" class="footer">
 		<div class="inner p-r">
@@ -297,5 +342,4 @@
 	</div>
 </div>
 </body>
-
 </html>

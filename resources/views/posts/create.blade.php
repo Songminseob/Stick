@@ -200,9 +200,9 @@
 					<td>
 						<select class="input-sel" style="width:160px" name = "bun">
 							<option value="">분류</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
+							<option value="토익">토익</option>
+							<option value="토플">토플</option>
+							<option value="텝스">텝스</option>
 						</select>
 						<select class="input-sel ml5" style="width:454px" name = "gang">
 							<option value="">강의명</option>
@@ -227,45 +227,35 @@
 									<input type="radio" name="allstar" value="5" checked="checked"/>
 									<span class="input-txt">만점</span>
 								</label>
-								<span class="star-rating">
-									<span class="star-inner" style="width:100%"></span>
-								</span>
+								5
 							</li>
 							<li>
 								<label class="input-sp ico">
 									<input type="radio" name="allstar" value="4"/>
 									<span class="input-txt">만점</span>
 								</label>
-								<span class="star-rating">
-									<span class="star-inner" style="width:80%"></span>
-								</span>
+								4
 							</li>
 							<li>
 								<label class="input-sp ico">
 									<input type="radio" name="allstar" value="3"/>
 									<span class="input-txt">만점</span>
 								</label>
-								<span class="star-rating">
-									<span class="star-inner" style="width:60%"></span>
-								</span>
+								3
 							</li>
 							<li>
 								<label class="input-sp ico">
 									<input type="radio" name="allstar" value="2"/>
 									<span class="input-txt">만점</span>
 								</label>
-								<span class="star-rating">
-									<span class="star-inner" style="width:40%"></span>
-								</span>
+								2
 							</li>
 							<li>
 								<label class="input-sp ico">
 									<input type="radio" name="allstar" value="1"/>
 									<span class="input-txt">만점</span>
 								</label>
-								<span class="star-rating">
-									<span class="star-inner" style="width:20%"></span>
-								</span>
+								1
 							</li>
 						</ul>
 					</td>

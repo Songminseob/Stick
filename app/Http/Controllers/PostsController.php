@@ -52,26 +52,43 @@ class PostsController extends Controller
     }
 
     
-    public function show(Post $post)
+    public function show(Post $post, Request $request)
     {
-        
+
+        $user = $request->session()->get('user');
+
+        return view("posts.show", compact('post'),[
+            'user' => $user
+        ]);
+
     }
 
     
-    public function edit(Post $post)
+    public function edit(Post $post, Request $request)
     {
-       
+        $user = $request->session()->get('user');
+
+        return view("posts.edit", compact('post'),[
+           'user' => $user
+        ]);
     }
 
    
     public function update(Request $request, Post $post)
     {
+        $user = $request->session()->get('user');
         
+        $post->update(request(['title', 'bun', 'gang', 'star','user_id']));
+
+        return redirect('/posts');
     }
 
     
     public function destroy(Post $post)
     {
-        
+
+        $post->delete();
+
+        return redirect('/posts');
     }
 }

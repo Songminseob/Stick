@@ -63,5 +63,13 @@ Route::get('/posts/create', [PostsController::class, 'create'])->name('create');
 
 Route::post('/posts', [PostsController::class, 'store'])->name('store');
 
+Route::get('/posts/{post}', [PostsController::class, 'show'])->name('show');
+
+Route::get('/posts/{post}/edit', [PostsController::class, 'edit'])->name('edit');
+
+Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('update');
+
+Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('destroy');
+
 Auth::routes();
 
