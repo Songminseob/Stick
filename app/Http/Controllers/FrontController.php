@@ -105,13 +105,5 @@ class FrontController extends BaseController
         ]);
     }
 
-    function list(Request $request)
-    {
-        $user = $request->session()->get('user');
-
-        return view("front.list",[
-            'isLogin' => $this->isLogin, 'user' => $user
-        ]);
-    }
 
 }

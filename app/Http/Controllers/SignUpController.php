@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class SignUpController extends BaseController
 {
@@ -20,18 +21,37 @@ class SignUpController extends BaseController
 
     function validator(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'string','min:4', 'max:10'],
+        // $validatedData = $request->validate([
+        //     'name' => ['required', 'string','min:2', 'max:10'],
+        //     'user_id' =>['bail','required', 'string', 'min:4','max:15','unique:users'],
+        //     'email' => ['bail','required', 'string', 'email','min:4', 'max:50', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'max:15', 'confirmed'],
+        //     'phone' =>['bail','required','string','min:8','max:15','unique:users'],
+        // ]);
+
+        // if($validatedData->validate()->fails()){
+        //     return redirect()
+        //     ->back()
+        //     ->withErrors($validator->errors())
+        //     ->withInput();
+        // }
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string','min:2', 'max:10'],
             'user_id' =>['bail','required', 'string', 'min:4','max:15','unique:users'],
             'email' => ['bail','required', 'string', 'email','min:4', 'max:50', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'max:15', 'confirmed'],
             'phone' =>['bail','required','string','min:8','max:15','unique:users'],
         ]);
         
-        if($validatedData->fails()){
-            return redirectTo('/step3');
+        if($validator->fails()){
+            return redirect()
+            ->back()
+            ->withErrors($validator->errors())
+            ->withInput();
         }
-        return "/step4";
+
+        return redirect('/step4');
         
     }
 
@@ -46,6 +66,9 @@ class SignUpController extends BaseController
 
 
     function step4(Request $data){
+
+        $this->validator($data);
+
         User::create([
             'name' => $data['name'],
             'user_id' => $data['user_id'], 

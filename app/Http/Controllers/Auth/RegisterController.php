@@ -50,15 +50,7 @@ class RegisterController extends Controller
             'smsre' => $data['smsre'],
             'emare' => $data['emare'],
         ]);
-        //의존성 주입
-        // $user = new User();
-        // $user->name = $data['name'];
-        // $user->user_id = $data['user_id'];
-        // $user->email = $data['email'];
-        // $user->password = Hash::make($data['password']);
-        // $user->user_level = config('ext.user.user_level.default');
-
-        // return $user->save();
+        
     }
 
 

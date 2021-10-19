@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\FindController;
 use App\Http\Controllers\ModifyController;
-use App\Http\Controllers\ListController;
+use App\Http\Controllers\PostsController;
 
 
 Route::get('/', [FrontController::class, 'index']);
@@ -18,8 +18,6 @@ Route::get('/step1', [FrontController::class, 'step1']);
 Route::get('/step2', [FrontController::class, 'step2']);
 
 Route::get('/step3', [FrontController::class, 'step3'])->name('auth.step3');
-
-Route::post('/step3', [SignUpController::class, 'validator']); //유효성검사
 
 Route::get('/step4', [FrontController::class, 'step4']);
 
@@ -57,12 +55,13 @@ Route::post('/mypro', [ModifyController::class, 'profile'])->name('myprofile');
 
 Route::post('/modipro', [ModifyController::class, 'modipro'])->name('modi.pro');
 
-Route::get('/list', [FrontController::class, 'list'])->name('list');
+//게시판
 
-Route::get('/write', [ListController::class, 'write']);
+Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 
-Route::post('/writecom', [ListController::class, 'writecom'])->name('write.com');
+Route::get('/posts/create', [PostsController::class, 'create'])->name('create');
 
+Route::post('/posts', [PostsController::class, 'store'])->name('store');
 
 Auth::routes();
 
