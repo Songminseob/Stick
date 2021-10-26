@@ -44,7 +44,7 @@
 		
 		<div class="nav-section">
 			<div class="inner p-r">
-				<h1><a href="#"><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
+				<h1><a href="{{ route("h.index") }}"><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
 				<div class="nav-box">
 					<h2 class="hidden">주메뉴 시작</h2>
 					
@@ -179,8 +179,8 @@
 						<tr>
 							
 							<th scope="col"><span class="icons">*</span>이름</th>
-							{{-- <td>{{ $user[0]->name }}</td> --}}
-							<td><input type="text" class="input-text" style="width:302px" placeholder="{{ $user[0]->name }}" default="{{ $user[0]->name }}" name="name"/></td>
+							<td>{{ $user[0]->name }}</td>
+							{{-- <td><input type="text" class="input-text" style="width:302px" placeholder="{{ $user[0]->name }}" default="{{ $user[0]->name }}" name="name"/></td> --}}
 						</tr>
 						<tr>
 							<th scope="col"><span class="icons">*</span>아이디</th>
@@ -197,8 +197,9 @@
 						<tr>
 							<th scope="col"><span class="icons">*</span>이메일주소</th>
 							<td>
-								<input type="hidden" name="email" id="emailid"/>
-								<input type="text" class="input-text" style="width:138px" name="email1" id="email1" required/> @ 
+								{{ $user[0]->email }}
+								{{-- <input type="hidden" name="email" id="emailid"/>
+								<input type="text" class="input-text" style="width:138px" name="email1" id="email1" placeholder="{{ $user[0]->email }}" required/> @ 
 								<input type="text" class="input-text" style="width:138px" name="domain" id="domain" required/>
 								<select class="input-sel" style="width:160px">
 									<option value="">선택입력</option>
@@ -206,7 +207,7 @@
 									<option value="">선택입력</option>
 									<option value="">선택입력</option>
 									<option value="">선택입력</option>
-								</select>
+								</select> --}}
 							</td>
 						</tr>
 						<tr>

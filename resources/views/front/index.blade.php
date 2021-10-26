@@ -44,7 +44,7 @@
 		
 		<div class="nav-section">
 			<div class="inner p-r">
-				<h1><a href="#"><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
+				<h1><a href=#><img src="http://img.hackershrd.com/common/logo.png" alt="해커스 HRD LOGO" width="165" height="37"/></a></h1>
 				<div class="nav-box">
 					<h2 class="hidden">주메뉴 시작</h2>
 					
@@ -145,9 +145,9 @@
 		<div class="top-section">
 			<div class="inner">
 				<div class="link-box">
-				@if ($isLogin)
+				@if ($user)
 					<!-- 로그인후 -->
-					{{$isLogin[0]}}님
+					{{$user[0]->user_id}}님
 					<a href="{{ route("logout") }}">로그아웃</a>	
 					<a href="{{ route("mypro") }}">내정보</a>
 				@else

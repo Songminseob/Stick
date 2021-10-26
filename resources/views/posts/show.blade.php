@@ -233,18 +233,15 @@
 				</tr>
 			</tbody>
 		</table>
-
-		
 			<a href="{{ route("posts") }}" class="btn-m-gray">목록</a>
-
-			<a href="{{ route("edit", $post) }}" class="btn-m ml5">수정</a>
-
-			<form method="POST" action="/posts/{{ $post->id }}">
-				@csrf
-				@method('delete')
-			<button class="btn-m-dark">삭제</button>
-			</form>
-			
+			@if($user[0]->user_id==$post->user_id)
+				<a href="{{ route("edit", $post) }}" class="btn-m ml5">수정</a>
+				<form method="POST" action="/posts/{{ $post->id }}">
+					@csrf
+					@method('delete')
+				<button class="btn-m-dark">삭제</button>
+				</form>			
+			@endif
 	
 
 		<div class="search-info">

@@ -9,6 +9,7 @@
 <title>해커스 HRD</title>
 <meta name="description" content="해커스 HRD" />
 <meta name="keywords" content="해커스, HRD" />
+<meta name="csrf-token" content="{{ csrf_token() }}"/> <!-- ajax통신 csrf-token -->
 
 <!-- 파비콘설정 -->
 <link rel="shortcut icon" type="image/x-icon" href="http://img.hackershrd.com/common/favicon.ico" />
@@ -193,20 +194,28 @@
 				<li><a href="#">어학 및 자격증</a></li>
 			</ul>
 
+			<form method="post" action="{{ route('board.find') }}">
+				@csrf	
 			<div class="search-info">
 				<div class="search-form f-r">
-					<select class="input-sel" style="width:158px">
+					<select class="input-sel" style="width:158px" name ="bun">
 						<option value="">분류</option>
+						<option value="토익">토익</option>
+						<option value="토플">토플</option>
+						<option value="텝스">텝스</option>
 					</select>
-					<select class="input-sel" style="width:158px">
+					<select class="input-sel" style="width:158px" name ="gang">
 						<option value="">강의명</option>
-						<option value="">작성자</option>
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
 					</select>
-					<input type="text" class="input-text" placeholder="강의명을 입력하세요." style="width:158px"/>
-					<button type="button" class="btn-s-dark">검색</button>
+					
+					<input type="text" class="input-text" placeholder="강의명을 입력하세요." name="findtitle" style="width:158px"/>
+					<button type="button" class="btn-s-dark" id="search">검색</button>
 				</div>
 			</div>
-
+			</form>
 			<table border="0" cellpadding="0" cellspacing="0" class="tbl-bbs">
 				<caption class="hidden">수강후기</caption>
 				<colgroup>
@@ -237,7 +246,7 @@
 						<td>
 							<a href="/posts/{{ $post->id }}">
 								<span class="tc-gray ellipsis_line">수강 강의명 : {{ $post->gang }}</span>
-								<strong class="ellipsis_line">{{ $post->title }}</strong>
+								<strong class="ellipsis_line" name="title">{{ $post->title }}</strong>
 							</a>
 						</td>
 						<td>
@@ -250,20 +259,11 @@
 				
 				</tbody>
 			</table>
-
+			<!-- 페이지네이션 -->
 			<div class="box-paging">
-				<a href="#"><i class="icon-first"><span class="hidden">첫페이지</span></i></a>
-				<a href="#"><i class="icon-prev"><span class="hidden">이전페이지</span></i></a>
-				<a href="#" class="active">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">6</a>
-				<a href="#"><i class="icon-next"><span class="hidden">다음페이지</span></i></a>
-				<a href="#"><i class="icon-last"><span class="hidden">마지막페이지</span></i></a>
+				{{ $posts->links() }}
 			</div>
-
+			
 			<div class="box-btn t-r" id="write">
 				@if ($user)
 				<a href="{{ route("create") }}" class="btn-m" id = "write">후기 작성</a>
@@ -297,5 +297,40 @@
 	</div>
 </div>
 </body>
+@include('sweetalert::alert')
+<script>
+
+	$(document).ready(function(){
+
+		$("#search").click(function(){
+
+			
+
+			// $.ajax(
+			// 	{
+					
+			// 		headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+			// 		type:"json",
+			// 		method:"POST",
+			// 		url:"{{ route('board.find') }}",
+			// 		data:{ findtitle: $("input[name='findtitle']").val() }, 
+			// 		dataType: "json", 
+			// 		success:function(){
+			// 			alert("성공");
+			// 		},
+					
+			// 		error:function(err){
+			// 			if (err.status == 422) {
+			// 				alert("실패");
+			// 			}
+			// 		}
+			// 	}
+			// )
+
+		})
+
+	});
+
+</script>
 
 </html>

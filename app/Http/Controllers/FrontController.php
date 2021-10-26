@@ -24,7 +24,7 @@ class FrontController extends BaseController
     function index(Request $request) 
     {
         $user = $request->session()->get('user');
-        return view("front.index", ['isLogin' => $this->isLogin, 'user' => $this->user]);
+        return view("front.index", ['user' => $user]);
     }
 
     function step1() 
@@ -62,7 +62,7 @@ class FrontController extends BaseController
     function logout(Request $request)
     {
         $user = $request->session()->forget('user');
-        return view("front.index", ['isLogin' => Auth::logout()]);//로그인세션 로그아웃
+        return view("front.index", ['user' => Auth::logout()]);//로그인세션 로그아웃
     }
     
     function fid()
@@ -105,5 +105,6 @@ class FrontController extends BaseController
         ]);
     }
 
+    
 
 }

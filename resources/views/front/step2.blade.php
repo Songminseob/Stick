@@ -188,9 +188,9 @@
 						<p>주민번호 없이 메시지 수신가능한 휴대폰으로 1개 아이디만 회원가입이 가능합니다. </p>
 
 						<br />
-						<input type="text" class="input-text" id="input1" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input2" style="width:50px"/> - 
-						<input type="text" class="input-text" id="input3" style="width:50px"/>
+						<input type="text" class="input-text" id="input1" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='3' style="width:50px"/> - 
+						<input type="text" class="input-text" id="input2" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' style="width:50px"/> - 
+						<input type="text" class="input-text" id="input3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength='4' style="width:50px"/>
 						<button class="btn-s-line" id="btn1">인증번호 받기</button>
 
 						<br /><br />
