@@ -12,18 +12,40 @@ class PageController extends Controller
     public function index(Request $request)
     {
 
-        $offset = $request->query('offset', 1);
-        $limit = $request->query('limit', 5);
-       
-        
-  
+        // page : 1, offset =0
+        // page : 2, offset =5
+        // page : 3, offset =10
+        // page : 4, offset =15
+
+        $currentPage = $request->query('page'); //현재page의 값을
+        $limit = 3;
+        $offset = $limit * ($currentPage - 1);
+
         $data = [
-            'posts' => Page::offset($offset == 1 ? $offset : ($offset + $limit) * $offset)->limit($limit)->get(),
+            'posts' => Page::offset($offset)->limit($limit)->get(),
             'totalCount' => Page::all()->count(),
-            'pageCount' => ceil(Page::all()->count() / 5),
+            'totalPage' => ceil(Page::all()->count() / 3),
         ];
        
-        
-        return view('pagination', ['data' => $data]);
+
+        // for($i=0; $i<$data['pageCount']; $i++){
+            
+        //     $count = $i*5;
+
+        //     $modidata = Page::offset($count)->limit($limit)->get();
+
+        //     $page[$i]= $modidata;
+
+        // }
+
+        //dd($currentPage);
+       
+        return view('pagination', [
+            'data' => $data,
+            'page' => $data['posts'],
+            'pageOffset' => 5,
+            'totalPage' => $data['totalPage'],
+            'currentPage' => $currentPage,
+        ]);
     }
 }
